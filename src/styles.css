@@ -1,0 +1,103 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: Arial, Helvetica, sans-serif;
+
+  --color-green-200: #9cece1;
+  --color-green-300: #40d8c4;
+  --color-green-950: #082b37;
+
+  --color-mtk-100: #e6faf6;
+  --color-mtk-200: #9cece1;
+  --color-mtk-300: #40d8c4;
+  --color-mtk-400: #2bbfa9;
+  --color-mtk-500: #18a678;
+  --color-mtk-600: #128a63;
+  --color-mtk-700: #0e6d50;
+  --color-mtk-800: #0a3441;
+  --color-mtk-900: #082b37;
+  --color-mtk-950: #062028;
+  --color-mtk-ink: #f8fcfb;
+}
+
+@layer base {
+  :root {
+    color-scheme: dark;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5.5rem;
+  }
+
+  body {
+    margin: 0;
+    background: #082b37;
+    color: #f8fcfb;
+    font-family: Arial, Helvetica, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  *:focus-visible {
+    outline: 2px solid #40d8c4;
+    outline-offset: 4px;
+  }
+
+  ::selection {
+    background: #40d8c4;
+    color: #082b37;
+  }
+
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+}
+
+.mtk-grid-backdrop {
+  background-image:
+    linear-gradient(to right, rgba(64, 216, 196, 0.08) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(64, 216, 196, 0.08) 1px, transparent 1px);
+  background-size: 56px 56px;
+}
+
+.mtk-glow {
+  background:
+    radial-gradient(60% 60% at 50% 40%, rgba(64, 216, 196, 0.18), transparent 70%),
+    radial-gradient(40% 40% at 15% 85%, rgba(24, 166, 120, 0.16), transparent 70%);
+}
+
+.mtk-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(64, 216, 196, 0.45) transparent;
+}
+
+.mtk-scrollbar::-webkit-scrollbar {
+  height: 6px;
+  width: 6px;
+}
+
+.mtk-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(64, 216, 196, 0.45);
+  border-radius: 999px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

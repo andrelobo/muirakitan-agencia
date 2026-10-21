@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100" role="img" aria-labelledby="title desc">
+  <title id="title">Símbolo Muirakitan</title>
+  <desc id="desc">Marca abstrata da Muirakitan formada por seis módulos em rotação de 45 graus.</desc>
+  <g transform="translate(50 50) rotate(45) scale(.82) translate(-42 -42)"><rect x="0.0000" y="0.0000" width="24.6666" height="24.6666" rx="3" fill="#18A678" opacity="1"/><rect x="0.0000" y="29.6667" width="24.6666" height="24.6666" rx="3" fill="#18A678" opacity="0.78"/><rect x="29.6667" y="29.6667" width="24.6666" height="24.6666" rx="3" fill="#18A678" opacity="1"/><rect x="59.3334" y="29.6667" width="24.6666" height="24.6666" rx="3" fill="#18A678" opacity="0.78"/><rect x="59.3334" y="0.0000" width="24.6666" height="24.6666" rx="3" fill="#18A678" opacity="1"/><rect x="29.6667" y="59.3334" width="24.6666" height="24.6666" rx="3" fill="#40D8C4" opacity="1"/></g>
+</svg>
