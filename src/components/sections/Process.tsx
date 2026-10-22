@@ -2,10 +2,10 @@ import { PROCESS_STEPS } from '../../data/process';
 
 export function Process() {
   return (
-    <section id="processo" className="border-t border-white/10 py-24">
+    <section id="processo" className="border-t border-line py-24">
       <div className="mx-auto max-w-6xl px-6">
         <header className="max-w-3xl">
-          <p className="text-xs uppercase tracking-[0.3em] text-green-300">
+          <p className="text-xs uppercase tracking-[0.3em] text-accent">
             Como funciona
           </p>
           <h2 className="mt-4 text-3xl font-semibold sm:text-4xl">
@@ -17,25 +17,25 @@ export function Process() {
           {PROCESS_STEPS.map((step, index) => (
             <li
               key={step.id}
-              className="relative rounded-2xl border border-white/15 bg-white/5 p-7"
+              className="relative rounded-2xl border border-line bg-surface p-7"
             >
               <div className="flex items-center justify-between">
-                <span className="text-xs font-semibold tracking-[0.2em] text-green-300">
+                <span className="text-xs font-semibold tracking-[0.2em] text-accent">
                   {`0${index + 1}`}
                 </span>
-                <span className="rounded-full border border-white/15 px-3 py-1 text-xs text-stone-300">
+                <span className="rounded-full border border-line bg-surface-muted px-3 py-1 text-xs text-ink-muted">
                   {step.duration}
                 </span>
               </div>
               <h3 className="mt-6 text-lg font-semibold">{step.title}</h3>
-              <p className="mt-3 text-sm leading-relaxed text-stone-300">
+              <p className="mt-3 text-sm leading-relaxed text-ink-muted">
                 {step.description}
               </p>
             </li>
           ))}
         </ol>
 
-        <div className="mt-12 grid gap-6 rounded-2xl border border-white/15 bg-white/5 p-8 lg:grid-cols-3">
+        <div className="mt-12 grid gap-6 rounded-2xl border border-line bg-surface-muted p-8 lg:grid-cols-3">
           {[
             {
               title: 'Transparência',
@@ -51,10 +51,10 @@ export function Process() {
             },
           ].map((item) => (
             <div key={item.title}>
-              <h3 className="text-base font-semibold text-green-300">
+              <h3 className="text-base font-semibold text-accent">
                 {item.title}
               </h3>
-              <p className="mt-2 text-sm leading-relaxed text-stone-300">
+              <p className="mt-2 text-sm leading-relaxed text-ink-muted">
                 {item.text}
               </p>
             </div>

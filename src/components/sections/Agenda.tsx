@@ -190,23 +190,23 @@ export function Agenda({
   }
 
   return (
-    <section id="agenda" className="border-t border-white/10 py-24">
+    <section id="agenda" className="border-t border-line py-24">
       <div className="mx-auto max-w-6xl px-6">
         <header className="max-w-3xl">
-          <p className="text-xs uppercase tracking-[0.3em] text-green-300">
+          <p className="text-xs uppercase tracking-[0.3em] text-accent">
             Agenda web
           </p>
           <h2 className="mt-4 text-3xl font-semibold sm:text-4xl">
             Agende a conversa sem sair do site.
           </h2>
-          <p className="mt-5 text-stone-300">
+          <p className="mt-5 text-ink-muted">
             Três passos, menos de um minuto. Você escolhe o serviço, o dia e o
             horário, e nós confirmamos pelo WhatsApp ou por e-mail.
           </p>
         </header>
 
         <div className="mt-14 grid gap-6 lg:grid-cols-[1.5fr_1fr]">
-          <div className="rounded-2xl border border-white/15 bg-white/5 p-6 sm:p-8">
+          <div className="rounded-2xl border border-line bg-surface p-6 sm:p-8">
             <ol className="flex flex-wrap items-center gap-2 sm:gap-3">
               {STEPS.map((item, index) => {
                 const active = step === item.id;
@@ -223,18 +223,17 @@ export function Agenda({
                       aria-current={active ? 'step' : undefined}
                       className={cn(
                         'flex items-center gap-2 rounded-full border px-3 py-1.5 text-xs transition-colors sm:px-4 sm:text-sm',
-                        active &&
-                          'border-green-300 bg-green-300 text-green-950',
-                        !active && done && 'border-white/20 text-stone-200 hover:bg-white/10',
-                        !active && !done && 'border-white/10 text-stone-500',
+                        active && 'border-accent bg-accent text-white',
+                        !active && done && 'border-line-strong text-ink-muted hover:bg-surface-muted',
+                        !active && !done && 'border-line text-ink-subtle',
                       )}
                     >
                       <span
                         className={cn(
                           'flex h-5 w-5 items-center justify-center rounded-full text-[11px] font-semibold',
-                          active && 'bg-green-950 text-green-300',
-                          !active && done && 'bg-white/10 text-stone-200',
-                          !active && !done && 'bg-white/5 text-stone-400',
+                          active && 'bg-accent-strong text-white',
+                          !active && done && 'bg-surface-sunken text-ink-muted',
+                          !active && !done && 'bg-surface-muted text-ink-subtle',
                         )}
                       >
                         {done ? (
@@ -247,7 +246,7 @@ export function Agenda({
                     </button>
                     {index < STEPS.length - 1 && (
                       <span
-                        className="hidden h-px w-6 bg-white/15 sm:block"
+                        className="hidden h-px w-6 bg-line-strong sm:block"
                         aria-hidden="true"
                       />
                     )}
@@ -266,7 +265,7 @@ export function Agenda({
               <div className="mt-8">
                 {step === 1 && (
                   <fieldset>
-                    <legend className="text-sm font-medium text-stone-200">
+                    <legend className="text-sm font-medium text-ink">
                       Qual frente de serviço você quer discutir?
                     </legend>
                     <div className="mt-5 grid gap-3 sm:grid-cols-2">
@@ -281,8 +280,8 @@ export function Agenda({
                             className={cn(
                               'rounded-xl border p-5 text-left transition-colors',
                               selected
-                                ? 'border-green-300 bg-green-300/10'
-                                : 'border-white/15 bg-white/5 hover:border-green-300/50 hover:bg-white/10',
+                                ? 'border-accent bg-accent-soft'
+                                : 'border-line bg-surface hover:border-accent/40 hover:bg-surface-muted',
                             )}
                           >
                             <span className="flex items-center justify-between">
@@ -290,17 +289,17 @@ export function Agenda({
                                 name={item.icon}
                                 className={cn(
                                   'h-5 w-5',
-                                  selected ? 'text-green-300' : 'text-stone-300',
+                                  selected ? 'text-accent' : 'text-ink-muted',
                                 )}
                               />
-                              <span className="text-xs text-stone-400">
+                              <span className="text-xs text-ink-subtle">
                                 {item.durationMinutes} min
                               </span>
                             </span>
                             <span className="mt-3 block text-sm font-semibold">
                               {item.title}
                             </span>
-                            <span className="mt-1 block text-xs leading-relaxed text-stone-400">
+                            <span className="mt-1 block text-xs leading-relaxed text-ink-subtle">
                               {item.tagline}
                             </span>
                           </button>
@@ -313,7 +312,7 @@ export function Agenda({
                 {step === 2 && (
                   <div className="grid gap-8 lg:grid-cols-2">
                     <div>
-                      <p className="text-sm font-medium text-stone-200">
+                      <p className="text-sm font-medium text-ink">
                         Escolha o dia
                       </p>
                       <div
@@ -333,8 +332,8 @@ export function Agenda({
                               className={cn(
                                 'flex min-w-[74px] shrink-0 flex-col items-center rounded-xl border px-4 py-3 transition-colors',
                                 selected
-                                  ? 'border-green-300 bg-green-300 text-green-950'
-                                  : 'border-white/15 bg-white/5 text-stone-200 hover:border-green-300/50',
+                                  ? 'border-accent bg-accent text-white'
+                                  : 'border-line bg-surface text-ink hover:border-accent/40',
                               )}
                             >
                               <span className="text-xs uppercase tracking-wider">
@@ -350,14 +349,14 @@ export function Agenda({
                           );
                         })}
                       </div>
-                      <p className="mt-4 text-xs text-stone-400">
+                      <p className="mt-4 text-xs text-ink-subtle">
                         Atendimento {CONTACT.hours}. Horários com antecedência
                         mínima de {AGENDA.minLeadHours}h.
                       </p>
                     </div>
 
                     <div>
-                      <p className="text-sm font-medium text-stone-200">
+                      <p className="text-sm font-medium text-ink">
                         Escolha o horário
                       </p>
                       {date ? (
@@ -380,12 +379,12 @@ export function Agenda({
                               className={cn(
                                 'rounded-lg border py-2 text-sm transition-colors',
                                 slot.time === time &&
-                                  'border-green-300 bg-green-300 text-green-950',
+                                  'border-accent bg-accent text-white',
                                 slot.available &&
                                   slot.time !== time &&
-                                  'border-white/15 bg-white/5 text-stone-200 hover:border-green-300/50',
+                                  'border-line bg-surface text-ink hover:border-accent/40',
                                 !slot.available &&
-                                  'cursor-not-allowed border-white/5 bg-white/[0.02] text-stone-600 line-through',
+                                  'cursor-not-allowed border-line bg-surface-muted text-ink-subtle line-through',
                               )}
                             >
                               {slot.time}
@@ -393,7 +392,7 @@ export function Agenda({
                           ))}
                         </div>
                       ) : (
-                        <p className="mt-4 rounded-xl border border-dashed border-white/20 p-6 text-sm text-stone-400">
+                        <p className="mt-4 rounded-xl border border-dashed border-line-strong p-6 text-sm text-ink-subtle">
                           Selecione um dia para ver os horários livres.
                         </p>
                       )}
@@ -414,7 +413,7 @@ export function Agenda({
                           onChange={(event) =>
                             setForm({ ...form, name: event.target.value })
                           }
-                          className="mt-2 w-full rounded-lg border border-white/15 bg-green-950/60 px-4 py-2.5 text-sm text-stone-50 placeholder:text-stone-500"
+                          className="mt-2 w-full rounded-lg border border-line bg-surface px-4 py-2.5 text-sm text-ink placeholder:text-ink-subtle"
                           placeholder="Como devemos chamar você"
                         />
                       </Field>
@@ -429,7 +428,7 @@ export function Agenda({
                           onChange={(event) =>
                             setForm({ ...form, company: event.target.value })
                           }
-                          className="mt-2 w-full rounded-lg border border-white/15 bg-green-950/60 px-4 py-2.5 text-sm text-stone-50 placeholder:text-stone-500"
+                          className="mt-2 w-full rounded-lg border border-line bg-surface px-4 py-2.5 text-sm text-ink placeholder:text-ink-subtle"
                           placeholder="Nome da empresa"
                         />
                       </Field>
@@ -444,7 +443,7 @@ export function Agenda({
                           onChange={(event) =>
                             setForm({ ...form, email: event.target.value })
                           }
-                          className="mt-2 w-full rounded-lg border border-white/15 bg-green-950/60 px-4 py-2.5 text-sm text-stone-50 placeholder:text-stone-500"
+                          className="mt-2 w-full rounded-lg border border-line bg-surface px-4 py-2.5 text-sm text-ink placeholder:text-ink-subtle"
                           placeholder="voce@empresa.com.br"
                         />
                       </Field>
@@ -463,8 +462,8 @@ export function Agenda({
                               phone: maskPhone(event.target.value),
                             })
                           }
-                          className="mt-2 w-full rounded-lg border border-white/15 bg-green-950/60 px-4 py-2.5 text-sm text-stone-50 placeholder:text-stone-500"
-                          placeholder="(11) 99999-9999"
+                          className="mt-2 w-full rounded-lg border border-line bg-surface px-4 py-2.5 text-sm text-ink placeholder:text-ink-subtle"
+                          placeholder="(92) 98593-0954"
                         />
                       </Field>
 
@@ -481,19 +480,19 @@ export function Agenda({
                             onChange={(event) =>
                               setForm({ ...form, notes: event.target.value })
                             }
-                            className="mt-2 w-full rounded-lg border border-white/15 bg-green-950/60 px-4 py-2.5 text-sm text-stone-50 placeholder:text-stone-500"
+                            className="mt-2 w-full rounded-lg border border-line bg-surface px-4 py-2.5 text-sm text-ink placeholder:text-ink-subtle"
                             placeholder="Processo atual, sistemas usados, prazo desejado..."
                           />
                         </Field>
                       </div>
                     </div>
 
-                    <label className="mt-6 flex items-start gap-3 text-sm text-stone-300">
+                    <label className="mt-6 flex items-start gap-3 text-sm text-ink-muted">
                       <input
                         type="checkbox"
                         checked={consent}
                         onChange={(event) => setConsent(event.target.checked)}
-                        className="mt-0.5 h-4 w-4 shrink-0 rounded border-white/30 bg-green-950 accent-green-300"
+                        className="mt-0.5 h-4 w-4 shrink-0 rounded border-line-strong bg-surface accent-accent"
                       />
                       <span>
                         Autorizo a Muirakitan Tecnologia a entrar em contato
@@ -522,7 +521,7 @@ export function Agenda({
                 {error && (
                   <p
                     role="alert"
-                    className="mt-6 rounded-lg border border-red-400/40 bg-red-500/10 px-4 py-3 text-sm text-red-200"
+                    className="mt-6 rounded-lg border border-red-300 bg-red-50 px-4 py-3 text-sm text-red-700"
                   >
                     {error}
                   </p>
@@ -549,62 +548,62 @@ export function Agenda({
             )}
           </div>
 
-          <aside className="h-fit rounded-2xl border border-white/15 bg-white/5 p-6 sm:p-8 lg:sticky lg:top-24">
-            <p className="text-xs uppercase tracking-[0.3em] text-green-300">
+          <aside className="h-fit rounded-2xl border border-line bg-surface p-6 sm:p-8 lg:sticky lg:top-24">
+            <p className="text-xs uppercase tracking-[0.3em] text-accent">
               Resumo
             </p>
 
             <dl className="mt-6 space-y-5 text-sm">
               <div>
-                <dt className="text-stone-400">Serviço</dt>
-                <dd className="mt-1 font-medium text-stone-50">
+                <dt className="text-ink-subtle">Serviço</dt>
+                <dd className="mt-1 font-medium text-ink">
                   {service ? service.title : 'Escolha um serviço'}
                 </dd>
               </div>
               <div>
-                <dt className="text-stone-400">Data</dt>
-                <dd className="mt-1 font-medium text-stone-50">
+                <dt className="text-ink-subtle">Data</dt>
+                <dd className="mt-1 font-medium text-ink">
                   {date ? formatRelativeDay(date) : 'A definir'}
                 </dd>
               </div>
               <div>
-                <dt className="text-stone-400">Horário</dt>
-                <dd className="mt-1 font-medium text-stone-50">
+                <dt className="text-ink-subtle">Horário</dt>
+                <dd className="mt-1 font-medium text-ink">
                   {time
                     ? `${time} · ${duration} min`
                     : 'A definir'}
                 </dd>
               </div>
               <div>
-                <dt className="text-stone-400">Formato</dt>
-                <dd className="mt-1 font-medium text-stone-50">
+                <dt className="text-ink-subtle">Formato</dt>
+                <dd className="mt-1 font-medium text-ink">
                   Videochamada online · {CONTACT.responseTime.toLowerCase()}
                 </dd>
               </div>
             </dl>
 
-            <div className="mt-7 border-t border-white/10 pt-6">
-              <p className="text-xs uppercase tracking-[0.2em] text-stone-400">
+            <div className="mt-7 border-t border-line pt-6">
+              <p className="text-xs uppercase tracking-[0.2em] text-ink-subtle">
                 Como funciona a confirmação
               </p>
-              <ul className="mt-4 space-y-3 text-sm text-stone-300">
+              <ul className="mt-4 space-y-3 text-sm text-ink-muted">
                 <li className="flex items-start gap-3">
                   <MessageCircle
-                    className="mt-0.5 h-4 w-4 shrink-0 text-green-300"
+                    className="mt-0.5 h-4 w-4 shrink-0 text-accent"
                     aria-hidden="true"
                   />
                   Envie pelo WhatsApp com todos os dados do pedido.
                 </li>
                 <li className="flex items-start gap-3">
                   <Mail
-                    className="mt-0.5 h-4 w-4 shrink-0 text-green-300"
+                    className="mt-0.5 h-4 w-4 shrink-0 text-accent"
                     aria-hidden="true"
                   />
                   Ou receba por e-mail em {CONTACT.email}.
                 </li>
                 <li className="flex items-start gap-3">
                   <CalendarPlus
-                    className="mt-0.5 h-4 w-4 shrink-0 text-green-300"
+                    className="mt-0.5 h-4 w-4 shrink-0 text-accent"
                     aria-hidden="true"
                   />
                   Salve o horário no Google Agenda ou no seu calendário.
@@ -612,7 +611,7 @@ export function Agenda({
               </ul>
             </div>
 
-            <p className="mt-7 flex items-start gap-2 text-xs text-stone-400">
+            <p className="mt-7 flex items-start gap-2 text-xs text-ink-subtle">
               <Clock className="mt-0.5 h-3.5 w-3.5 shrink-0" aria-hidden="true" />
               Os agendamentos ficam salvos neste navegador. Use o botão “Meus
               agendamentos” para revisar ou cancelar.
@@ -636,10 +635,10 @@ function Field({
   children: React.ReactNode;
 }) {
   return (
-    <label htmlFor={htmlFor} className="block text-sm text-stone-200">
+    <label htmlFor={htmlFor} className="block text-sm text-ink">
       {label}
       {required && (
-        <span className="ml-1 text-green-300" aria-hidden="true">
+        <span className="ml-1 text-accent" aria-hidden="true">
           *
         </span>
       )}
@@ -662,17 +661,17 @@ function Confirmation({
 
   return (
     <div className="mt-8">
-      <div className="rounded-xl border border-green-300/40 bg-green-300/10 p-6">
-        <p className="flex items-center gap-2 text-sm font-medium text-green-300">
+      <div className="rounded-xl border border-accent/40 bg-accent-soft p-6">
+        <p className="flex items-center gap-2 text-sm font-medium text-accent-strong">
           <CalendarCheck className="h-4 w-4" aria-hidden="true" />
           Agendamento {booking.code} registrado
         </p>
         <h3 className="mt-4 text-2xl font-semibold">{service.title}</h3>
-        <p className="mt-2 text-stone-200">
+        <p className="mt-2 text-ink">
           {formatDateTimeLabel(booking.date, booking.time)} ·{' '}
           {booking.durationMinutes} minutos
         </p>
-        <p className="mt-1 text-sm text-stone-400">
+        <p className="mt-1 text-sm text-ink-subtle">
           Enviamos os detalhes para {booking.email}
         </p>
       </div>

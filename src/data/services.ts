@@ -2,6 +2,29 @@ import type { Service, ServiceId } from '../types';
 
 export const SERVICES: Service[] = [
   {
+    id: 'ia-governada',
+    title: 'IA com governança',
+    shortTitle: 'IA Governada',
+    tagline: 'Desenvolvimento assistido por IA com regras, limites e validação para ir à produção com segurança.',
+    description:
+      'Aplicamos Context Engineering ao seu projeto: criamos AGENTS.md, AI_CONTEXT.md, skills/agentes com guardrails, separando o que a IA pode fazer do que deve ficar 100% determinístico. Inspirado na experiência real com sistemas fiscais em produção.',
+    highlights: [
+      'Context Engineering (AGENTS.md + AI_CONTEXT.md)',
+      'Agentes com guardrails e limites claros',
+      'Testes, build e lint obrigatórios antes de merge',
+      'IA como copiloto, nunca como motor de regras críticas',
+      'Trilha de evidências e observabilidade',
+    ],
+    deliverables: [
+      'Contexto curado para agentes',
+      'Skills/agentes sob medida',
+      'Política de validação (test/build/lint)',
+      'Guia de uso e handover',
+    ],
+    durationMinutes: 60,
+    icon: 'brain',
+  },
+  {
     id: 'sites',
     title: 'Sites e landing pages',
     shortTitle: 'Sites',
@@ -43,7 +66,7 @@ export const SERVICES: Service[] = [
     shortTitle: 'I.A. aplicada',
     tagline: 'IA com método: escopo, dados, avaliação e governança.',
     description:
-      'Não acreditamos em IA genérica. Usamos inteligência artificial onde ela entrega valor mensurável: extração de documentos, classificação, revisão, respostas com base em fonte, copiloto interno e agentes com ferramentas. Privacidade, trilha de auditoria e revisão humana fazem parte do escopo.',
+      'Aplicamos IA onde ela entrega valor mensurável: extração de documentos, classificação, revisão, respostas com base em fonte e copilotos internos. Privacidade, trilha de auditoria, revisão humana e guardrails fazem parte do escopo.',
     highlights: ['Avaliação com casos reais', 'Revisão humana obrigatória', 'LGPD e rastreabilidade'],
     deliverables: ['Diagnóstico de viabilidade', 'Protótipo funcional', 'Guardrails e prompts versionados', 'Métricas de qualidade'],
     durationMinutes: 45,

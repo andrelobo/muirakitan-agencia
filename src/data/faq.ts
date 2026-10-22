@@ -5,9 +5,29 @@ export interface FaqItem {
 
 export const FAQ_ITEMS: FaqItem[] = [
   {
-    question: 'A reunião é gratuita e com que compromisso assumimos?',
+    question: 'O que significa "IA com governança"?',
     answer:
-      'A primeira conversa é gratuita, sem compromisso, e dura de 30 a 60 minutos. Ela serve para entender o problema e, se houver aderência, saímos com um próximo passo definido: uma proposta de escopo ou um projeto-piloto.',
+      'Significa usar IA como copiloto, com regras claras. Criamos AGENTS.md e AI_CONTEXT.md com limites, guardrails, separação entre IA e regras determinísticas, e gates obrigatórios (testes, build e lint) antes de ir para produção.',
+  },
+  {
+    question: 'Como vocês aplicam isso em sistemas já em produção?',
+    answer:
+      'Inspirados no ZERA (sistema fiscal em produção com emissões reais), usamos barreiras duplas, fail-closed, observabilidade (timeline/webhooks/polling) e nunca usamos IA para decisões fiscais/críticas. Tudo baseado em evidências.',
+  },
+  {
+    question: 'O que é Context Engineering?',
+    answer:
+      'É criar o "cérebro" do projeto para os agentes: regras, fluxos, integrações, riscos e histórico. Com isso a IA erra menos, segue padrões e entrega código mais previsível.',
+  },
+  {
+    question: 'Vocês entregam agentes/skills prontos para o meu time?',
+    answer:
+      'Sim. Transformamos conhecimento da sua equipe em skills/agentes reutilizáveis, com documentação, validação e handover para que vocês consigam manter e evoluir sozinhos.',
+  },
+  {
+    question: 'Quanto tempo leva para começar?',
+    answer:
+      'Após o diagnóstico (30 a 45 minutos), enviamos o escopo fechado em até 3 dias úteis. Se aprovado, iniciamos na semana seguinte.',
   },
   {
     question: 'Quanto tempo leva um projeto típico?',

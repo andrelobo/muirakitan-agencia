@@ -7,6 +7,7 @@ import { BookingsDialog } from './components/sections/BookingsDialog';
 import { Contact } from './components/sections/Contact';
 import { Faq } from './components/sections/Faq';
 import { Hero } from './components/sections/Hero';
+import { Methodology } from './components/sections/Methodology';
 import { Process } from './components/sections/Process';
 import { Services } from './components/sections/Services';
 import { useBookings } from './hooks/useBookings';
@@ -32,7 +33,7 @@ export default function App() {
   );
 
   return (
-    <div className="min-h-screen bg-green-950">
+    <div className="min-h-screen bg-canvas">
       <Header
         bookingCount={bookings.length}
         onOpenBookings={() => setDialogOpen(true)}
@@ -42,6 +43,7 @@ export default function App() {
       <main>
         <Hero onOpenAgenda={scrollToAgenda} />
         <Services onSelectService={handleSelectService} />
+        <Methodology />
         <Process />
         <Agenda
           key={serviceId ?? 'sem-servico'}

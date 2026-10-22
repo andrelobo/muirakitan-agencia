@@ -46,7 +46,7 @@ export function BookingsDialog({
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-start justify-center overflow-y-auto bg-green-950/80 p-4 backdrop-blur-sm sm:p-8"
+      className="fixed inset-0 z-50 flex items-start justify-center overflow-y-auto bg-ink/60 p-4 backdrop-blur-sm sm:p-8"
       onClick={(event) => {
         if (event.target === event.currentTarget) onClose();
       }}
@@ -57,11 +57,11 @@ export function BookingsDialog({
         role="dialog"
         aria-modal="true"
         aria-labelledby="bookings-title"
-        className="w-full max-w-3xl rounded-2xl border border-white/15 bg-mtk-900 p-6 shadow-2xl outline-none sm:p-8"
+        className="w-full max-w-3xl rounded-2xl border border-line bg-surface p-6 shadow-2xl outline-none sm:p-8"
       >
         <div className="flex items-start justify-between gap-4">
           <div>
-            <p className="text-xs uppercase tracking-[0.3em] text-green-300">
+            <p className="text-xs uppercase tracking-[0.3em] text-accent">
               Agenda web
             </p>
             <h2
@@ -75,14 +75,14 @@ export function BookingsDialog({
             type="button"
             onClick={onClose}
             aria-label="Fechar"
-            className="rounded-lg border border-white/15 p-2 text-stone-300 transition-colors hover:bg-white/10 hover:text-white"
+            className="rounded-lg border border-line p-2 text-ink-subtle transition-colors hover:bg-surface-muted hover:text-ink"
           >
             <X className="h-5 w-5" aria-hidden="true" />
           </button>
         </div>
 
         {sorted.length === 0 ? (
-          <p className="mt-8 rounded-xl border border-dashed border-white/20 p-8 text-center text-sm text-stone-300">
+          <p className="mt-8 rounded-xl border border-dashed border-line-strong p-8 text-center text-sm text-ink-muted">
             Você ainda não tem agendamentos. Escolha um serviço e reserve um
             horário na agenda.
           </p>
@@ -93,26 +93,26 @@ export function BookingsDialog({
               return (
                 <li
                   key={booking.id}
-                  className="rounded-xl border border-white/15 bg-white/5 p-5"
+                  className="rounded-xl border border-line bg-surface-muted p-5"
                 >
                   <div className="flex flex-wrap items-start justify-between gap-3">
                     <div>
-                      <p className="text-xs uppercase tracking-[0.2em] text-green-300">
+                      <p className="text-xs uppercase tracking-[0.2em] text-accent">
                         {booking.code}
                       </p>
                       <h3 className="mt-1 text-lg font-semibold">
                         {service.title}
                       </h3>
-                      <p className="mt-1 text-sm text-stone-300">
+                      <p className="mt-1 text-sm text-ink-muted">
                         {formatDateTimeLabel(booking.date, booking.time)} ·{' '}
                         {booking.durationMinutes} min
                       </p>
-                      <p className="mt-1 text-xs text-stone-400">
+                      <p className="mt-1 text-xs text-ink-subtle">
                         {booking.name}
                         {booking.company ? ` · ${booking.company}` : ''}
                       </p>
                     </div>
-                    <span className="rounded-full border border-green-300/40 bg-green-300/10 px-3 py-1 text-xs text-green-300">
+                    <span className="rounded-full border border-accent/40 bg-accent-soft px-3 py-1 text-xs text-accent-strong">
                       Aguardando confirmação
                     </span>
                   </div>

@@ -1,4 +1,5 @@
 export type ServiceId =
+  | 'ia-governada'
   | 'sites'
   | 'apps'
   | 'automacoes'

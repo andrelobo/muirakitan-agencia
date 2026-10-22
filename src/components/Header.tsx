@@ -27,19 +27,19 @@ export function Header({
   }, [menuOpen]);
 
   return (
-    <header className="sticky top-0 z-40 border-b border-white/10 bg-green-950/90 backdrop-blur">
+    <header className="sticky top-0 z-40 border-b border-line bg-canvas/85 backdrop-blur">
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-6 py-4">
         <a href="#topo" className="shrink-0" aria-label="Muirakitan Agência, início">
           <BrandLogo />
         </a>
 
         <nav aria-label="Navegação principal" className="hidden md:block">
-          <ul className="flex items-center gap-7 text-sm text-stone-300">
+          <ul className="flex items-center gap-7 text-sm text-ink-muted">
             {NAV_LINKS.map((link) => (
               <li key={link.id}>
                 <a
                   href={`#${link.id}`}
-                  className="transition-colors hover:text-green-300"
+                  className="transition-colors hover:text-accent"
                 >
                   {link.label}
                 </a>
@@ -53,7 +53,7 @@ export function Header({
             <CalendarCheck className="h-4 w-4" aria-hidden="true" />
             Meus agendamentos
             {bookingCount > 0 && (
-              <span className="ml-1 rounded-full bg-green-300 px-1.5 text-xs font-semibold text-green-950">
+              <span className="ml-1 rounded-full bg-accent px-1.5 text-xs font-semibold text-white">
                 {bookingCount}
               </span>
             )}
@@ -66,7 +66,7 @@ export function Header({
 
         <button
           type="button"
-          className="rounded-lg border border-white/20 p-2 text-stone-100 md:hidden"
+          className="rounded-lg border border-line-strong p-2 text-ink md:hidden"
           aria-expanded={menuOpen}
           aria-controls="menu-mobile"
           aria-label={menuOpen ? 'Fechar menu' : 'Abrir menu'}
@@ -83,18 +83,18 @@ export function Header({
       <div
         id="menu-mobile"
         className={cn(
-          'border-t border-white/10 bg-green-950 px-6 pb-6 md:hidden',
+          'border-t border-line bg-canvas px-6 pb-6 md:hidden',
           menuOpen ? 'block' : 'hidden',
         )}
       >
         <nav aria-label="Navegação móvel">
-          <ul className="flex flex-col gap-1 py-4 text-sm text-stone-200">
+          <ul className="flex flex-col gap-1 py-4 text-sm text-ink-muted">
             {NAV_LINKS.map((link) => (
               <li key={link.id}>
                 <a
                   href={`#${link.id}`}
                   onClick={() => setMenuOpen(false)}
-                  className="block rounded-lg px-2 py-2 hover:bg-white/10 hover:text-green-300"
+                  className="block rounded-lg px-2 py-2 hover:bg-surface-muted hover:text-accent"
                 >
                   {link.label}
                 </a>
