@@ -12,7 +12,7 @@ export const FAQ_ITEMS: FaqItem[] = [
   {
     question: 'Como vocês aplicam isso em sistemas já em produção?',
     answer:
-      'Inspirados no ZERA (sistema fiscal em produção com emissões reais), usamos barreiras duplas, fail-closed, observabilidade (timeline/webhooks/polling) e nunca usamos IA para decisões fiscais/críticas. Tudo baseado em evidências.',
+      'Inspirados no Jupati (sistema fiscal em produção com emissões reais), usamos barreiras duplas, fail-closed, observabilidade (timeline/webhooks/polling) e nunca usamos IA para decisões fiscais/críticas. Tudo baseado em evidências.',
   },
   {
     question: 'O que é Context Engineering?',

@@ -6,7 +6,7 @@ diagnóstico. Construído com Vite, React 19, TypeScript e Tailwind CSS 4.
 **Proposta comercial:** Desenvolvimento assistido por IA com governança. Usamos
 Context Engineering, agentes com guardrails e validação obrigatória para
 aplicar IA com segurança em sistemas em produção, legados e integrações
-críticas. Inspirado na prática real com o [ZERA](https://github.com/andrelobo/zera-backend)
+críticas. Inspirado na prática real com o [Jupati](https://github.com/andrelobo/zera-backend)
 (sistema fiscal em produção com emissões reais).
 
 ## Identidade visual
