@@ -57,7 +57,7 @@ export function BookingsDialog({
         role="dialog"
         aria-modal="true"
         aria-labelledby="bookings-title"
-        className="w-full max-w-3xl rounded-2xl border border-line bg-surface p-6 shadow-2xl outline-none sm:p-8"
+        className="w-full max-w-3xl rounded-2xl border bg-bg p-6 shadow-2xl outline-none sm:p-8"
       >
         <div className="flex items-start justify-between gap-4">
           <div>
@@ -75,14 +75,14 @@ export function BookingsDialog({
             type="button"
             onClick={onClose}
             aria-label="Fechar"
-            className="rounded-lg border border-line p-2 text-ink-subtle transition-colors hover:bg-surface-muted hover:text-ink"
+            className="rounded-lg border-divide p-2 text-ink-muted transition-colors hover:bg-bg-subtle hover:text-ink"
           >
             <X className="h-5 w-5" aria-hidden="true" />
           </button>
         </div>
 
         {sorted.length === 0 ? (
-          <p className="mt-8 rounded-xl border border-dashed border-line-strong p-8 text-center text-sm text-ink-muted">
+          <p className="mt-8 rounded-xl border border-dashed border-divide p-8 text-center text-sm text-ink-muted">
             Você ainda não tem agendamentos. Escolha um serviço e reserve um
             horário na agenda.
           </p>
@@ -93,7 +93,7 @@ export function BookingsDialog({
               return (
                 <li
                   key={booking.id}
-                  className="rounded-xl border border-line bg-surface-muted p-5"
+                  className="rounded-xl border bg-bg-muted p-5"
                 >
                   <div className="flex flex-wrap items-start justify-between gap-3">
                     <div>
@@ -107,12 +107,13 @@ export function BookingsDialog({
                         {formatDateTimeLabel(booking.date, booking.time)} ·{' '}
                         {booking.durationMinutes} min
                       </p>
-                      <p className="mt-1 text-xs text-ink-subtle">
+                      <p className="mt-1 text-xs text-ink-muted">
                         {booking.name}
                         {booking.company ? ` · ${booking.company}` : ''}
                       </p>
                     </div>
-                    <span className="rounded-full border border-accent/40 bg-accent-soft px-3 py-1 text-xs text-accent-strong">
+
+                    <span className="rounded-full border border-accent/20 bg-accent-soft px-3 py-1 text-xs text-accent-strong">
                       Aguardando confirmação
                     </span>
                   </div>

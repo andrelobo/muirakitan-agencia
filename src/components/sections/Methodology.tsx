@@ -33,9 +33,9 @@ const STEPS = [
 
 export function Methodology() {
   return (
-    <section id="metodologia" className="border-t border-line py-24">
-      <div className="mx-auto max-w-6xl px-6">
-        <header className="max-w-3xl">
+    <section id="metodologia" className="border-t border-divide py-24 section">
+      <div className="mx-auto max-w-7xl px-6">
+        <header className="max-w-4xl">
           <p className="text-xs uppercase tracking-[0.3em] text-accent">
             Metodologia
           </p>
@@ -43,7 +43,7 @@ export function Methodology() {
             Como aplicamos IA com governança em sistemas reais
           </h2>
           <p className="mt-5 text-ink-muted">
-            Inspirado na prática real com o ZERA (sistema fiscal em produção com
+            Inspirado na prática real com o Jupati (sistema fiscal em produção com
             emissões reais). IA como copiloto, regras críticas sempre
             determinísticas.
           </p>
@@ -55,7 +55,7 @@ export function Methodology() {
             return (
               <li
                 key={step.id}
-                className="relative rounded-2xl border border-line bg-surface p-7"
+                className="relative rounded-2xl border border-divide bg-bg p-7"
               >
                 <span className="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-accent-soft text-accent">
                   <Icon className="h-6 w-6" aria-hidden="true" />
@@ -69,7 +69,7 @@ export function Methodology() {
           })}
         </ol>
 
-        <div className="mt-12 rounded-2xl border border-accent/40 bg-accent-soft p-8">
+        <div className="mt-12 rounded-2xl border border-accent/20 bg-accent-soft p-8">
           <p className="text-xs uppercase tracking-[0.3em] text-accent-strong">
             Princípio
           </p>

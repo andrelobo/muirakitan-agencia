@@ -27,7 +27,9 @@ export function Header({
   }, [menuOpen]);
 
   return (
-    <header className="sticky top-0 z-40 border-b border-line bg-canvas/85 backdrop-blur">
+    <header
+      className="sticky top-0 z-40 border-b border-divider bg-bg-subtle/80 backdrop-blur"
+    >
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-6 py-4">
         <a href="#topo" className="shrink-0" aria-label="Muirakitan Agência, início">
           <BrandLogo />
@@ -39,7 +41,7 @@ export function Header({
               <li key={link.id}>
                 <a
                   href={`#${link.id}`}
-                  className="transition-colors hover:text-accent"
+                  className="nav-link relative transition-colors hover:text-accent-strong"
                 >
                   {link.label}
                 </a>
@@ -66,7 +68,7 @@ export function Header({
 
         <button
           type="button"
-          className="rounded-lg border border-line-strong p-2 text-ink md:hidden"
+          className="rounded-lg border border-divider p-2 text-ink-muted md:hidden flex items-center gap-2"
           aria-expanded={menuOpen}
           aria-controls="menu-mobile"
           aria-label={menuOpen ? 'Fechar menu' : 'Abrir menu'}
@@ -83,7 +85,7 @@ export function Header({
       <div
         id="menu-mobile"
         className={cn(
-          'border-t border-line bg-canvas px-6 pb-6 md:hidden',
+          'border-t border-divide bg-bg p-6 pb-6 md:hidden',
           menuOpen ? 'block' : 'hidden',
         )}
       >
@@ -94,7 +96,7 @@ export function Header({
                 <a
                   href={`#${link.id}`}
                   onClick={() => setMenuOpen(false)}
-                  className="block rounded-lg px-2 py-2 hover:bg-surface-muted hover:text-accent"
+                  className="block rounded-md px-3 py-2 hover:bg-surface-muted hover:text-accent"
                 >
                   {link.label}
                 </a>

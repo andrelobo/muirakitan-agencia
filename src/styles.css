@@ -3,11 +3,12 @@
 @theme {
   --font-sans: Arial, Helvetica, sans-serif;
 
+  /* Escala de marca — igual ao muirakitan-model */
   --color-green-200: #9cece1;
   --color-green-300: #40d8c4;
   --color-green-950: #082b37;
 
-  --color-mtk-100: #e6faf6;
+  --color-mtk-100: #d6f5ec;
   --color-mtk-200: #9cece1;
   --color-mtk-300: #40d8c4;
   --color-mtk-400: #2bbfa9;
@@ -19,27 +20,40 @@
   --color-mtk-950: #062028;
   --color-mtk-ink: #f8fcfb;
 
-  /* Tema claro — tokens semânticos */
-  --color-canvas: #ffffff;
-  --color-surface: #ffffff;
-  --color-surface-muted: #f3f8f7;
-  --color-surface-sunken: #e8f1ef;
+  /* ===== Tema escuro verde (baseado no muirakitan-model) ===== */
 
-  --color-ink: #082b37;
-  --color-ink-muted: #4a626b;
-  --color-ink-subtle: #6f878f;
+  /* Superfícies */
+  --color-bg: #082b37;
+  --color-bg-subtle: #0d3441;
+  --color-bg-muted: #12404e;
+  --color-bg-sunken: #062028;
 
-  --color-accent: #0b7d61;
-  --color-accent-strong: #085844;
-  --color-accent-soft: #e6f7f2;
+  --color-canvas: #082b37;
+  --color-surface: #0d3441;
+  --color-surface-muted: #12404e;
+  --color-surface-sunken: #062028;
 
-  --color-line: #dfe8e6;
-  --color-line-strong: #c2d5d1;
+  /* Texto */
+  --color-ink: #f8fcfb;
+  --color-ink-hover: #ffffff;
+  --color-ink-muted: #c9dbd7;
+  --color-ink-subtle: #9fb8b4;
+
+  /* Acento mint */
+  --color-accent: #40d8c4;
+  --color-accent-strong: #9cece1;
+  --color-accent-soft: #0f3b46;
+
+  /* Bordas */
+  --color-line: #1c4a57;
+  --color-line-strong: #2b6272;
+  --color-divide: #1c4a57;
+  --color-divider: #1c4a57;
 }
 
 @layer base {
   :root {
-    color-scheme: light;
+    color-scheme: dark;
   }
 
   html {
@@ -49,15 +63,15 @@
 
   body {
     margin: 0;
-    background: #ffffff;
-    color: #082b37;
+    background: var(--color-bg);
+    color: var(--color-ink);
     font-family: Arial, Helvetica, sans-serif;
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
   }
 
   *:focus-visible {
-    outline: 2px solid #0b7d61;
+    outline: 2px solid var(--color-accent);
     outline-offset: 4px;
   }
 
@@ -77,22 +91,24 @@
   }
 }
 
+/* ===== Utilitários da marca ===== */
+
 .mtk-grid-backdrop {
   background-image:
-    linear-gradient(to right, rgba(11, 125, 97, 0.07) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(11, 125, 97, 0.07) 1px, transparent 1px);
+    linear-gradient(to right, rgba(64, 216, 196, 0.07) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(64, 216, 196, 0.07) 1px, transparent 1px);
   background-size: 56px 56px;
 }
 
 .mtk-glow {
   background:
     radial-gradient(60% 60% at 50% 40%, rgba(64, 216, 196, 0.16), transparent 70%),
-    radial-gradient(40% 40% at 15% 85%, rgba(24, 166, 120, 0.12), transparent 70%);
+    radial-gradient(40% 40% at 15% 85%, rgba(24, 166, 120, 0.14), transparent 70%);
 }
 
 .mtk-scrollbar {
   scrollbar-width: thin;
-  scrollbar-color: rgba(11, 125, 97, 0.4) transparent;
+  scrollbar-color: rgba(64, 216, 196, 0.4) transparent;
 }
 
 .mtk-scrollbar::-webkit-scrollbar {
@@ -101,13 +117,74 @@
 }
 
 .mtk-scrollbar::-webkit-scrollbar-thumb {
-  background: rgba(11, 125, 97, 0.4);
+  background: rgba(64, 216, 196, 0.4);
   border-radius: 999px;
+}
+
+/* Botão de acento: mint com leve gradiente (igual à referência) */
+.gradient-accent {
+  background-image: linear-gradient(135deg, #40d8c4 0%, #6fe6d6 100%);
+}
+
+.gradient-accent:hover {
+  background-image: linear-gradient(135deg, #9cece1 0%, #bdf5ec 100%);
+}
+
+/* Links de navegação com sublinhado animado */
+.nav-link {
+  position: relative;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -4px;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.2s ease;
+}
+
+.nav-link:hover::after {
+  transform: scaleX(1);
+}
+
+.nav-link-hover {
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.nav-link-hover:hover {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+/* ===== Ajustes de contraste para o tema escuro ===== */
+
+@layer utilities {
+  /* Botões mint usam texto verde-escuro (como na referência),
+     em vez de branco. */
+  .bg-accent.text-white,
+  .bg-accent-strong.text-white {
+    color: #082b37;
+  }
+
+  /* Overlay do modal: bg-ink/60 vira scrim escuro. */
+  .bg-ink\/60.bg-ink\/60 {
+    background-color: rgb(6 32 40 / 0.72);
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
+  }
+
+  .nav-link::after {
+    transition: none;
   }
 
   *,

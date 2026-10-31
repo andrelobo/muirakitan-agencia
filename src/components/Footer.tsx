@@ -6,7 +6,7 @@ const CURRENT_YEAR = new Date().getFullYear();
 
 export function Footer() {
   return (
-    <footer className="border-t border-line bg-surface-muted">
+    <footer className="border-t border-divide bg-bg-subtle">
       <div className="mx-auto max-w-6xl px-6 py-14">
         <div className="flex flex-col gap-10 md:flex-row md:items-start md:justify-between">
           <div className="max-w-sm">
@@ -27,7 +27,7 @@ export function Footer() {
                 <li key={link.id}>
                   <a
                     href={`#${link.id}`}
-                    className="transition-colors hover:text-accent"
+                    className="nav-link-hover transition-colors hover:text-accent-strong"
                   >
                     {link.label}
                   </a>
@@ -44,7 +44,7 @@ export function Footer() {
               <li>
                 <a
                   href={`mailto:${CONTACT.email}`}
-                  className="transition-colors hover:text-accent"
+                  className="nav-link-hover transition-colors hover:text-accent-strong"
                 >
                   {CONTACT.email}
                 </a>
@@ -55,7 +55,7 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-12 flex flex-col gap-3 border-t border-line pt-6 text-xs text-ink-subtle sm:flex-row sm:items-center sm:justify-between">
+        <div className="mt-12 flex flex-col gap-3 border-t border-divide pt-6 text-xs text-ink-subtle sm:flex-row sm:items-center sm:justify-between">
           <p>© {CURRENT_YEAR} Muirakitan Tecnologia.</p>
           <p>
             Agenda web com confirmação por WhatsApp e e-mail. Agendamentos

@@ -10,9 +10,9 @@ interface ServicesProps {
 
 export function Services({ onSelectService }: ServicesProps) {
   return (
-    <section id="servicos" className="border-t border-line py-24">
-      <div className="mx-auto max-w-6xl px-6">
-        <header className="max-w-3xl">
+    <section id="servicos" className="border-t border-divide py-24 section">
+      <div className="mx-auto max-w-7xl px-6">
+        <header className="max-w-4xl">
           <p className="text-xs uppercase tracking-[0.3em] text-accent">
             Serviços
           </p>
@@ -30,7 +30,7 @@ export function Services({ onSelectService }: ServicesProps) {
           {SERVICES.map((service) => (
             <article
               key={service.id}
-              className="flex h-full flex-col rounded-2xl border border-line bg-surface p-7 transition-colors hover:border-accent/50 hover:bg-surface-muted"
+              className="flex h-full flex-col rounded-2xl border border-divide bg-bg p-7 transition-colors hover:border-accent/30 hover:bg-bg-subtle"
             >
               <span className="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-accent-soft text-accent">
                 <ServiceIcon name={service.icon} className="h-6 w-6" />
@@ -59,8 +59,8 @@ export function Services({ onSelectService }: ServicesProps) {
                 ))}
               </ul>
 
-              <div className="mt-6 border-t border-line pt-5">
-                <p className="text-xs uppercase tracking-[0.2em] text-ink-subtle">
+              <div className="mt-6 border-t border-divide pt-5">
+                <p className="text-xs uppercase tracking-[0.2em] text-ink-muted">
                   Entregáveis
                 </p>
                 <p className="mt-2 text-sm text-ink-muted">
@@ -79,7 +79,7 @@ export function Services({ onSelectService }: ServicesProps) {
             </article>
           ))}
 
-          <article className="flex h-full flex-col justify-between rounded-2xl border border-accent/40 bg-accent-soft p-7">
+          <article className="flex h-full flex-col justify-between rounded-2xl border border-accent/20 bg-accent-soft p-7">
             <div>
               <h3 className="text-xl font-semibold">Não sabe o que precisa?</h3>
               <p className="mt-4 text-sm leading-relaxed text-ink-muted">

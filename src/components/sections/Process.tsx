@@ -2,9 +2,9 @@ import { PROCESS_STEPS } from '../../data/process';
 
 export function Process() {
   return (
-    <section id="processo" className="border-t border-line py-24">
-      <div className="mx-auto max-w-6xl px-6">
-        <header className="max-w-3xl">
+    <section id="processo" className="border-t border-divide py-24 section">
+      <div className="mx-auto max-w-7xl px-6">
+        <header className="max-w-4xl">
           <p className="text-xs uppercase tracking-[0.3em] text-accent">
             Como funciona
           </p>
@@ -17,13 +17,13 @@ export function Process() {
           {PROCESS_STEPS.map((step, index) => (
             <li
               key={step.id}
-              className="relative rounded-2xl border border-line bg-surface p-7"
+              className="relative rounded-2xl border border-divide bg-bg p-7"
             >
               <div className="flex items-center justify-between">
                 <span className="text-xs font-semibold tracking-[0.2em] text-accent">
                   {`0${index + 1}`}
                 </span>
-                <span className="rounded-full border border-line bg-surface-muted px-3 py-1 text-xs text-ink-muted">
+                <span className="rounded-full border border-divide bg-bg-subtle px-3 py-1 text-xs text-ink-muted">
                   {step.duration}
                 </span>
               </div>
@@ -35,7 +35,7 @@ export function Process() {
           ))}
         </ol>
 
-        <div className="mt-12 grid gap-6 rounded-2xl border border-line bg-surface-muted p-8 lg:grid-cols-3">
+        <div className="mt-12 grid gap-6 rounded-2xl border bg-bg-subtle p-8 lg:grid-cols-3">
           {[
             {
               title: 'Transparência',
@@ -50,7 +50,7 @@ export function Process() {
               text: 'LGPD desde o desenho: dados minimizados, acesso por perfil, logs e trilha de auditoria.',
             },
           ].map((item) => (
-            <div key={item.title}>
+            <div key={item.title} className="space-y-3">
               <h3 className="text-base font-semibold text-accent">
                 {item.title}
               </h3>

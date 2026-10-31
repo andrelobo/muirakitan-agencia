@@ -3,7 +3,7 @@ import { cn } from '../lib/cn';
 export function BrandLogo({ className }: { className?: string }) {
   return (
     <img
-      src="/brand/assets/svg/logo-horizontal-dark.svg"
+      src="/brand/assets/svg/logo-horizontal-white.svg"
       alt="Muirakitan Tecnologia"
       width={576}
       height={170}

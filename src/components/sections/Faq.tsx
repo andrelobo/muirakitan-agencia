@@ -1,13 +1,12 @@
 import { useState } from 'react';
 import { ChevronDown } from 'lucide-react';
 import { FAQ_ITEMS } from '../../data/faq';
-import { cn } from '../../lib/cn';
 
 export function Faq() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
-    <section id="faq" className="border-t border-line py-24">
+    <section id="faq" className="border-t border-divide py-24 section">
       <div className="mx-auto max-w-4xl px-6">
         <header>
           <p className="text-xs uppercase tracking-[0.3em] text-accent">
@@ -18,7 +17,7 @@ export function Faq() {
           </h2>
         </header>
 
-        <ul className="mt-12 divide-y divide-line overflow-hidden rounded-2xl border border-line bg-surface">
+        <ul className="mt-12 divide-y divide-divide overflow-hidden rounded-2xl border bg-bg">
           {FAQ_ITEMS.map((item, index) => {
             const open = openIndex === index;
             return (
@@ -29,14 +28,11 @@ export function Faq() {
                     aria-expanded={open}
                     aria-controls={`faq-answer-${index}`}
                     onClick={() => setOpenIndex(open ? null : index)}
-                    className="flex w-full items-center justify-between gap-4 px-6 py-5 text-left text-base font-medium transition-colors hover:bg-surface-muted"
+                    className="flex w-full items-center justify-between gap-4 px-6 py-5 text-left text-base font-medium transition-colors hover:bg-bg-subtle"
                   >
                     {item.question}
                     <ChevronDown
-                      className={cn(
-                        'h-5 w-5 shrink-0 text-accent transition-transform',
-                        open && 'rotate-180',
-                      )}
+                      className="h-5 w-5 shrink-0 text-accent transition-transform"
                       aria-hidden="true"
                     />
                   </button>
