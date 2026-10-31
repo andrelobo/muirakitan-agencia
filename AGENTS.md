@@ -76,6 +76,7 @@ Se qualquer gate falhar, o agente deve corrigir antes de continuar.
 ## 5. Contexto e Referências
 
 - **`CONTEXT.md`**: Contexto completo do projeto, arquitetura e regras de negócio.
+- **`docs/ESTADO-ATUAL.md`**: Snapshot da sessão atual (o que foi feito, pendências, como retomar). Ler primeiro ao retomar o trabalho.
 - **`docs/mef/principles.md`**: Princípios gerais do Muirakitan Engineering Framework.
 - **`docs/mef/engineering-model.md`**: Modelo de engenharia (SDD, níveis MEF).
 - **`docs/mef/templates/ADR.md`**: Template para registros de decisões arquitetônicas.
@@ -86,7 +87,7 @@ Se qualquer gate falhar, o agente deve corrigir antes de continuar.
 
 ## 6. Fluxo de Trabalho Recomendado
 
-1. **Ler `CONTEXT.md`** e `AGENTS.md` antes de iniciar qualquer tarefa.
+1. **Ler `docs/ESTADO-ATUAL.md`**, `CONTEXT.md` e `AGENTS.md` antes de iniciar qualquer tarefa.
 2. **Identificar** o que precisa ser feito (feature, bug, docs).
 3. **Criar/atualizar ADR** se a mudança for arquitetural (usar template `docs/mef/templates/ADR.md`).
 4. **Implementar** a mudança seguindo padrões do códigobase.

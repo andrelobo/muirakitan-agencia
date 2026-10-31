@@ -123,10 +123,12 @@ src/
 - **oxlint** para lint (configurado em `.oxlintrc.json`)
 
 ### 4.2 Estilo e Design
-- Tema claro: fundo branco, texto em verde-petróleo, acentos em verde da marca
-- Tokens semânticos definidos em `src/styles.css` (canvas, surface, ink, accent, etc.)
+- Tema escuro verde (baseado no `muirakitan-model`): fundo `#082b37`, texto `#f8fcfb`, acentos mint `#40d8c4` / `#9cece1`
+- `color-scheme: dark`; botões de acento usam texto escuro sobre o mint
+- Tokens semânticos definidos em `src/styles.css` (bg, bg-subtle, bg-muted, bg-sunken, ink, accent, divide, divider, etc.)
 - Escala de marca: green-950, green-300, green-200, mtk-500, mtk-ink
 - Fonte: Arial, Helvetica, sans-serif (do `muirakitan-model`)
+- Estado corrente da sessão: ver `docs/ESTADO-ATUAL.md`
 
 ### 4.3 Persistência
 - Agenda usa `localStorage` do navegador
