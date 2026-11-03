@@ -156,7 +156,7 @@ FIM
 # Instruções Confiáveis (sempre primeira fonte)
 - Leia AGENTS.md antes de qualquer coisa
 - Leia CONTEXT.md para regras de negócio
-- Siga principíos em docs/mef/principles.md
+- Siga principíos em docs/mef/01-foundations/principles.md
 
 # Sugestões (opcional, verificar depois)
 - RAG recuperou: [conteúdo de documentos]

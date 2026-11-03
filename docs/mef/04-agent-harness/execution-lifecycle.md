@@ -14,7 +14,7 @@ Este documento define o ciclo de vida completo de uma tarefa assistida por IA, d
 |-----------|-------|------------|
 | Ler `AGENTS.md` | 2-3 min | Conhecer regras "what/what-not-to-do" |
 | Ler `CONTEXT.md` | 3-5 min | Conhecer arquitetura, tipos, regras de negócio |
-| Revisar `docs/mef/principles.md` | 2 min | Compreender princípios orientadores |
+| Revisar `docs/mef/01-foundations/principles.md` | 2 min | Compreender princípios orientadores |
 | Definir escopo da tarefa | 2 min | O que será feito? Para que? Qual impacto? |
 
 **Checkpoint 1** (após fase 1): O agente pode responder:

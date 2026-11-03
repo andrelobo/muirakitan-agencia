@@ -14,25 +14,26 @@ críticas. Inspirado na prática real com o [Jupati](https://github.com/andrelob
 Todo o design vem do repositório `muirakitan-model`. Tokens, logo e ícones foram
 copiados e centralizados em `src/styles.css` e `public/brand/`.
 
-O site usa **tema claro**: fundo branco, texto em verde-petróleo e acentos na
-escala de verde da marca.
+O site usa **tema escuro verde**: fundo petróleo, texto claro e acentos mint.
 
-### Tokens semânticos do tema claro (`src/styles.css`)
+### Tokens semânticos (`src/styles.css`)
 
-| Token               | Valor     | Uso                                        |
-| ------------------- | --------- | ------------------------------------------ |
-| `canvas`            | `#FFFFFF` | fundo da página                            |
-| `surface`           | `#FFFFFF` | cartões e painéis                          |
-| `surface-muted`     | `#F3F8F7` | blocos de apoio e rodapé                   |
-| `surface-sunken`    | `#E8F1EF` | detalhes internos (ex.: contador de etapa) |
-| `ink`               | `#082B37` | texto principal                           |
-| `ink-muted`         | `#4A626B` | texto secundário                          |
-| `ink-subtle`        | `#6F878F` | texto terciário e legendas                |
-| `accent`            | `#0B7D61` | acentos, botões e estados selecionados     |
-| `accent-strong`     | `#085844` | hover do acento e textos sobre `accent-soft` |
-| `accent-soft`       | `#E6F7F2` | fundo de chips e destaques                |
-| `line`              | `#DFE8E6` | bordas e divisores                         |
-| `line-strong`       | `#C2D5D1` | bordas de controles                        |
+| Token | Valor | Uso |
+| --- | --- | --- |
+| `bg` / `canvas` | `#082B37` | fundo da página |
+| `bg-subtle` / `surface` | `#0D3441` | header, cards e rodapé |
+| `bg-muted` / `surface-muted` | `#12404E` | tags, hover e blocos de apoio |
+| `bg-sunken` / `surface-sunken` | `#062028` | poços e estados inativos |
+| `ink` | `#F8FCFB` | texto principal |
+| `ink-muted` | `#C9DBD7` | texto secundário |
+| `ink-subtle` | `#9FB8B4` | texto terciário e legendas |
+| `accent` | `#40D8C4` | acentos, botões e seleção |
+| `accent-strong` | `#9CECE1` | hover do acento e textos sobre `accent-soft` |
+| `accent-soft` | `#0F3B46` | fundo de chips e destaques |
+| `line` / `divide` | `#1C4A57` | bordas e divisores |
+| `line-strong` | `#2B6272` | bordas de controles |
+
+`color-scheme: dark`; botões de acento usam texto escuro (`#082B37`) sobre o mint.
 
 ### Escala de marca (mantida em `@theme`)
 
@@ -47,13 +48,13 @@ escala de verde da marca.
 
 Recursos de marca em `public/brand/assets/`:
 
-- `svg/logo-horizontal-dark.svg` — assinatura horizontal em versão escura (tema claro)
-- `svg/logo-horizontal-white.svg` — assinatura horizontal em versão branca (tema escuro)
+- `svg/logo-horizontal-dark.svg` — assinatura horizontal em versão escura (para tema claro; sem uso no momento)
+- `svg/logo-horizontal-white.svg` — assinatura horizontal em versão branca (em uso no tema escuro)
 - `svg/logo-mark.svg` — símbolo de seis módulos
 - `svg/favicon.svg`, `icons/favicon.ico`, `icons/apple-touch-icon.png`
 
-O foco visível usa `2px solid #0B7D61` com offset de `4px`, mantendo contraste
-suficiente sobre o fundo branco.
+O foco visível usa `2px solid #40D8C4` com offset de `4px`, mantendo contraste
+suficiente sobre o fundo escuro.
 
 ## Antes de publicar
 
@@ -89,7 +90,7 @@ Fluxo em três passos, em `src/components/sections/Agenda.tsx`:
 1. **Serviço** — oito frentes: IA governada, sites, aplicativos, automações, uso
    correto de I.A., APIs, sistemas contábeis/ERP e RPA (`src/data/services.ts`).
 2. **Data e hora** — agenda de segunda a sexta (9h–18h) e sábado (9h–13h),
-   com antecedência mínima de 2h e janela de 21 dias.
+   com antecedência mínima de 2h e janela de 21 dias úteis.
 3. **Seus dados** — nome, empresa, e-mail, WhatsApp, observações e autorização
    de contato.
 

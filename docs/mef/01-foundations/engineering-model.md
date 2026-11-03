@@ -47,7 +47,7 @@ Critérios devem ser **verificáveis** e preferivelmente mensuráveis:
 - ✅ "O lint (`npm run lint`) não tem erros (apenas warnings)"
 - ✅ "O tipocheck (`npm run typecheck`) passa integralmente"
 - ✅ "O componente tem cobertura de teste mínima de X%"
-- ✅ "A interface de agenda aparece corretamente no tema claro"
+- ✅ "A interface de agenda aparece corretamente no tema escuro"
 
 Critérios **não** aceitáveis (subjetivos):
 - ❌ "O código parece limpo"

@@ -1,6 +1,6 @@
 # AGENTS.md — Muirakitan Agência
 
-> **Contexto**: Este documento define os limites operacionais para agentes de IA que trabalharem neste repositório. Ele deve ser lido em conjunto com `CONTEXT.md`, `docs/mef/principles.md` e `docs/mef/engineering-model.md`.
+> **Contexto**: Este documento define os limites operacionais para agentes de IA que trabalharem neste repositório. Ele deve ser lido em conjunto com `CONTEXT.md`, `docs/mef/01-foundations/principles.md` e `docs/mef/01-foundations/engineering-model.md`.
 
 ---
 
@@ -77,8 +77,8 @@ Se qualquer gate falhar, o agente deve corrigir antes de continuar.
 
 - **`CONTEXT.md`**: Contexto completo do projeto, arquitetura e regras de negócio.
 - **`docs/ESTADO-ATUAL.md`**: Snapshot da sessão atual (o que foi feito, pendências, como retomar). Ler primeiro ao retomar o trabalho.
-- **`docs/mef/principles.md`**: Princípios gerais do Muirakitan Engineering Framework.
-- **`docs/mef/engineering-model.md`**: Modelo de engenharia (SDD, níveis MEF).
+- **`docs/mef/01-foundations/principles.md`**: Princípios gerais do Muirakitan Engineering Framework.
+- **`docs/mef/01-foundations/engineering-model.md`**: Modelo de engenharia (SDD, níveis MEF).
 - **`docs/mef/templates/ADR.md`**: Template para registros de decisões arquitetônicas.
 - **`src/types.ts`**: Tipos compartilhados do projeto.
 - **`src/config.ts`**: Configurações de marca, contato e agenda.

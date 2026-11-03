@@ -1,6 +1,6 @@
 # CONTEXT.md — Muirakitan Agência
 
-> **Contexto persistente do projeto**: Este documento captura a arquitetura atual, regras de negócio e decisões técnicas do projeto Muirakitan Agência. Deve ser lido em conjunto com `AGENTS.md`, `docs/mef/principles.md` e `docs/mef/engineering-model.md`.
+> **Contexto persistente do projeto**: Este documento captura a arquitetura atual, regras de negócio e decisões técnicas do projeto Muirakitan Agência. Deve ser lido em conjunto com `AGENTS.md`, `docs/mef/01-foundations/principles.md` e `docs/mef/01-foundations/engineering-model.md`.
 
 ---
 
@@ -81,7 +81,7 @@ src/
 #### Agenda (configurações)
 - **Storage key**: `muirakitan-agencia.bookings.v1` (localStorage)
 - **Min lead time**: 2 horas
-- **Horizon**: 21 dias
+- **Horizonte**: 21 dias úteis (contados a partir de hoje)
 - **Business hours**: Seg-sex 9h-18h, Sáb 9h-13h
 - **Step minutes**: 30min
 
@@ -109,7 +109,7 @@ src/
 
 ### 3.3 Regras de Negócio da Agenda
 - Antecedência mínima: 2 horas
-- Janela de agendamento: até 21 dias ahead
+- Janela de agendamento: até 21 dias úteis à frente
 - Horário de funcionamento: Seg-sex 9h-18h, Sáb 9h-13h
 - Horários disponíveis: em intervalos de 30 minutos
 
@@ -183,8 +183,8 @@ Baseado em `AGENTS.md`, o agente deve obedecer:
 ## 6. Referências Cruzadas
 
 - **`AGENTS.md`**: Instruções operacionais para agentes de IA
-- **`docs/mef/principles.md`**: Princípios do MEF
-- **`docs/mef/engineering-model.md`**: Modelo de engenharia (níveis MEF-1, MEF-2, MEF-3)
+- **`docs/mef/01-foundations/principles.md`**: Princípios do MEF
+- **`docs/mef/01-foundations/engineering-model.md`**: Modelo de engenharia (níveis MEF-1, MEF-2, MEF-3)
 - **`docs/mef/templates/ADR.md`**: Template para registros de decisões
 - **`src/types.ts`**: Tipos do projeto
 - **`src/config.ts`**: Configurações de negócio

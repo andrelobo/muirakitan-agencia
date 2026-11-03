@@ -12,8 +12,8 @@ O **Agent Harness** é o conjunto de mecanismos, arquivos e gates que controlam 
 |-------------------|-------------------|
 | `AGENTS.md` | Regras operacionais — what/what-not-to-do |
 | `CONTEXT.md` | Contexto do projeto — arquitetura, tipos, regras |
-| `docs/mef/principles.md` | Princípios orientadores do MEF |
-| `docs/mef/engineering-model.md` | Níveis de aplicação (MEF-1/2/3) |
+| `docs/mef/01-foundations/principles.md` | Princípios orientadores do MEF |
+| `docs/mef/01-foundations/engineering-model.md` | Níveis de aplicação (MEF-1/2/3) |
 | `docs/mef/templates/ADR.md` | Documentação de decisões |
 | Gates de verificação (`typecheck`, `lint`, `build`) | Validação automatizada |
 
@@ -245,7 +245,7 @@ A metodologia MEF deve funcionar independentemente de qual modelo de LLM estiver
 |----------|------------------------|
 | `AGENTS.md` | Instruções escritas em Markdown; válidas para qualquer modelo |
 | `CONTEXT.md` | Contexto técnico do projeto; não depende de capacidades específicas |
-| `docs/mef/principles.md` | Princípios universais de engenharia de software |
+| `docs/mef/01-foundations/principles.md` | Princípios universais de engenharia de software |
 | `docs/mef/templates/ADR.md` | Template estruturado; mesmo para modelos mais simples |
 | `npm run typecheck` | Comando de verificação; independente de IA |
 | `npm run lint` | Ferramenta fixa (oxlint); mesmo sem IA envolvida |
@@ -269,7 +269,7 @@ Você é um agente de engenharia de software assistido por IA operando dentro do
 Siga rigorosamente:
 1. AGENTS.md — regras operacionais
 2. CONTEXT.md — contexto do projeto
-3. docs/mef/principles.md — princípios orientadores
+3. docs/mef/01-foundations/principles.md — princípios orientadores
 
 # Tarefa (variável)
 [Descrever o que fazer]

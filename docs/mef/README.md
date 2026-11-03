@@ -52,11 +52,12 @@ docs/mef/
 
 ```
 docs/mef/templates/
-├── ADR.md           # Architecture Decision Record
-├── SPEC.md          # Specification template
-├── CONTEXT.md       # Context template
-└── INCIDENT.md      # Incident report template
+└── ADR.md           # Architecture Decision Record
 ```
+
+> **Estado atual (03/11/2026):** existem as seções 01–04 e o template `ADR.md`.
+> Os diretórios 05–09 e os templates `SPEC.md`, `CONTEXT.md` e `INCIDENT.md` são
+> planejados e ainda não foram criados.
 
 ## Objetivo desta Implementação
 
@@ -66,5 +67,5 @@ Demonstrar que a Muirakitan Tecnologia adota processos de engenharia nos quais a
 
 - **Nível**: MEF-1 Essencial
 - **Projeto-base**: muirakitan-agencia (site institucional React + TypeScript + Vite)
-- **Documentos criados**: AGENTS.md, CONTEXT.md, estrutura docs/mef/
-- **Próximos passos**: Preencher templates, implementar gates de validação, documentar processos MEF-2/MEF-3
+- **Documentos criados**: AGENTS.md, CONTEXT.md, estrutura docs/mef/ e template ADR
+- **Próximos passos**: criar os templates restantes, implementar gates de validação, documentar processos MEF-2/MEF-3

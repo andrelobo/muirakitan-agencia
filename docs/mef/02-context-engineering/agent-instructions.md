@@ -1,6 +1,6 @@
 # Instruções para Agentes — Operação Prática
 
-> **Objetivo**: Este documento serve como guia de bolso para agentes de IA trabalhando no repositório muirakitan-agência. Deve ser consultado em conjunto com `AGENTS.md`, `CONTEXT.md` e `docs/mef/principles.md`.
+> **Objetivo**: Este documento serve como guia de bolso para agentes de IA trabalhando no repositório muirakitan-agência. Deve ser consultado em conjunto com `AGENTS.md`, `CONTEXT.md` e `docs/mef/01-foundations/principles.md`.
 
 ## 1. Antes de Começar Any Task
 
@@ -10,7 +10,7 @@
 |-----------|-----------------|----------------|
 | `AGENTS.md` | Regras operacionais, what/what-not-to-do, gates | 2-3 minutos |
 | `CONTEXT.md` | Arquitetura, tipos, configurações, regras de negócio | 3-5 minutos |
-| `docs/mef/principles.md` | Princípios orientadores do MEF | 2 minutos |
+| `docs/mef/01-foundations/principles.md` | Princípios orientadores do MEF | 2 minutos |
 
 **Ordem**: Sempre AGENTS.md primeiro (regras de segurança), depois CONTEXT.md (contexto do projeto).
 
@@ -104,7 +104,7 @@ Se algo der errado durante a implementação:
 PASSO 1: LER DOCUMENTOS OBRIGATÓRIOS (5 min)
   ✓ Abrir AGENTS.md → verificar regras
   ✓ Abrir CONTEXT.md → entender arquitetura
-  ✓ Revisar docs/mef/principles.md → princípios
+  ✓ Revisar docs/mef/01-foundations/principles.md → princípios
 
 PASSO 2: ANALisar O QUE JÁ EXISTE (3 min)
   ✓ Rodar `npm run typecheck` → confirmar estado atual
@@ -198,8 +198,8 @@ export interface NomeInterfase {
 |-----------|---------|------------------|
 | AGENTS.md | raiz/AGENTS.md | Regras operacionais para IA |
 | CONTEXT.md | raiz/CONTEXT.md | Contexto do projeto, arquitectura |
-| Principles | docs/mef/principles.md | Princípios MEF |
-| Engineering Model | docs/mef/engineering-model.md | Modelos MEF-1/MEF-2/MEF-3 |
+| Principles | docs/mef/01-foundations/principles.md | Princípios MEF |
+| Engineering Model | docs/mef/01-foundations/engineering-model.md | Modelos MEF-1/MEF-2/MEF-3 |
 | Templates | docs/mef/templates/ | ADR, SPEC, CONTEXT, INCIDENT |
 | Types | src/types.ts | Tipos compartilhados do projeto |
 | Services | src/data/services.ts | Dados de 7 serviços oferecidos |
