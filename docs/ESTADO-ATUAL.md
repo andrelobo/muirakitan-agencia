@@ -42,10 +42,10 @@ A seção não foi adicionada ao menu do header: a navegação desktop já está
 ### 2.2 Projetos exibidos
 
 1. Heberton Pinheiro — site institucional (Libras/acessibilidade)
-2. Alcenir Silva — site profissional
-3. UrbanRank — web app para skatistas
-4. Apa Locadora — landing page de locação de motos
-5. Moari Agro — proposta digital (não é site de cliente publicado)
+2. Moari Agro — proposta digital (não é site de cliente publicado)
+3. Alcenir Silva — site profissional
+4. UrbanRank — web app para skatistas
+5. Apa Locadora — landing page de locação de motos
 6. Fortunato Tapeçaria — e-commerce
 7. Manausmacaco — portfólio de arte
 

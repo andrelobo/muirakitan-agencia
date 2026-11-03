@@ -21,6 +21,17 @@ export const PROJECTS: Project[] = [
       'Página inicial do site de Heberton Pinheiro com banner sobre consultoria em acessibilidade e Libras.',
   },
   {
+    id: 'moari-agro',
+    name: 'Moari Agro',
+    category: 'Proposta digital',
+    description:
+      'Proposta de presença digital para produtor de açaí em Rio Preto da Eva, com identidade visual, site institucional e conteúdo.',
+    url: 'https://moira-sage.vercel.app/',
+    image: '/portfolio/moari.png',
+    imageAlt:
+      'Página inicial da proposta digital da Moari Agro com palmeiras de açaí e chamada sobre o açaí da Amazônia.',
+  },
+  {
     id: 'alcenir-silva',
     name: 'Alcenir Silva',
     category: 'Site profissional',
@@ -52,17 +63,6 @@ export const PROJECTS: Project[] = [
     image: '/portfolio/apa.png',
     imageAlt:
       'Página inicial da Apa Locadora com imagem da moto Honda CG 160 e planos de aluguel.',
-  },
-  {
-    id: 'moari-agro',
-    name: 'Moari Agro',
-    category: 'Proposta digital',
-    description:
-      'Proposta de presença digital para produtor de açaí em Rio Preto da Eva, com identidade visual, site institucional e conteúdo.',
-    url: 'https://moira-sage.vercel.app/',
-    image: '/portfolio/moari.png',
-    imageAlt:
-      'Página inicial da proposta digital da Moari Agro com palmeiras de açaí e chamada sobre o açaí da Amazônia.',
   },
   {
     id: 'fortunato-tapecaria',
