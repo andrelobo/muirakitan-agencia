@@ -115,9 +115,11 @@ reenviar o pedido e cancelar.
 ## Portfólio
 
 A seção `#projetos` (`src/components/sections/Portfolio.tsx`) exibe sete projetos
-em `src/data/projects.ts`, com capturas 16:10 em `public/portfolio/` e links
-externos. Para adicionar um projeto, inclua o registro em `projects.ts` e a
-imagem correspondente (800x500).
+em `src/data/projects.ts`, com capturas 16:10 em `public/portfolio/`. Cada card
+abre uma página de case no próprio domínio; o link externo do site fica separado.
+
+Para adicionar um projeto, inclua o registro em `projects.ts`, a captura 800x500
+e a página em `public/projetos/<slug>/index.html`.
 
 ## Engenharia reversa assistida
 
@@ -128,6 +130,20 @@ de API e reconstrução assistida. Os dados ficam em `src/data/reverse.ts`.
 A oferta comercial está em `docs/comercial/engenharia-reversa-oferta.md` e o
 roteiro do primeiro piloto em `docs/operacao/piloto-engenharia-reversa.md`.
 Nenhuma análise começa sem autorização escrita do titular.
+
+## SEO e imagens
+
+- `index.html` concentra canonical, Open Graph, Twitter Card, `theme-color` e
+  JSON-LD de `ProfessionalService`.
+- `public/og-image.png` é o card social de 1200x630.
+- `public/robots.txt` e `public/sitemap.xml` apontam para o domínio de
+  `BRAND.url` e listam a home mais as sete páginas de case.
+- As páginas de case ficam em `public/projetos/<slug>/index.html`, com CSS
+  compartilhado em `public/projetos/case.css`; são estáticas e não dependem de
+  rewrite do SPA.
+- A faixa “Projetos entregues” no hero usa três projetos marcados com
+  `featured` em `projects.ts`. As imagens do portfólio são carregadas com
+  `loading="lazy"`; a imagem principal de cada case é pré-carregada.
 
 ## Estrutura
 
@@ -143,6 +159,14 @@ src/
 ├── config.ts      marca, contato e regras da agenda
 ├── styles.css     tokens da marca e estilos base
 └── types.ts
+
+public/
+├── portfolio/           capturas 800x500
+├── projetos/<slug>/     páginas de case estáticas
+├── projetos/case.css    estilos dos cases
+├── og-image.png         card social 1200x630
+├── robots.txt
+└── sitemap.xml
 ```
 
 ## Publicação

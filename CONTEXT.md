@@ -42,13 +42,23 @@ src/
 └── App.tsx               # Componente raiz com roteamento/estado
 ```
 
+```
+public/
+├── portfolio/            # capturas 800x500 dos projetos
+├── projetos/<slug>/      # páginas de case estáticas (HTML + CSS próprio)
+├── og-image.png          # card social 1200x630
+├── robots.txt
+└── sitemap.xml
+```
+
 ### 2.2 Páginas/Seções do Site
 
 | Seção | ID HTML | Descrição |
 |-------|---------|-----------|
-| Hero | `#topo` | Section principal com proposta de valor |
+| Hero | `#topo` | Section principal com proposta de valor e faixa de 3 projetos em destaque |
 | Serviços | `#servicos` | Grid de 8 frentes de serviço |
-| Portfólio | `#projetos` | Galeria de 7 projetos com links externos |
+| Portfólio | `#projetos` | Galeria de 7 projetos; cada card abre o case interno |
+| Cases (estáticos) | `/projetos/<slug>/index.html` | Página de case com conteúdo único, imagem, canonical e JSON-LD |
 | Engenharia reversa | `#engenharia-reversa` | Ofertas de diagnóstico de legado, contrato de API e reconstrução |
 | Metodologia | `#metodologia` | Como IA com governança é aplicada |
 | Processo | `#processo` | Do diagnóstico à entrega |
@@ -64,8 +74,10 @@ src/
 
 #### Portfólio (7 projetos)
 - Alcenir Silva (site profissional), Manausmacaco (portfólio de arte), Heberton Pinheiro (site institucional), UrbanRank (web app), Apa Locadora (landing page), Moari Agro (proposta digital) e Fortunato Tapeçaria (e-commerce)
-- Cada projeto tem: id, name, category, description, url, image, imageAlt
+- Cada projeto tem: id, name, category, description, url, image, imageAlt e `featured` opcional
+- `FEATURED_PROJECTS` alimenta a faixa “Projetos entregues” no hero (Heberton, Moari e UrbanRank)
 - Capturas em `public/portfolio/`, 800x500, PNG otimizado
+- Cases estáticos em `public/projetos/<slug>/index.html`; CSS compartilhado em `public/projetos/case.css`
 
 #### Engenharia reversa (3 ofertas)
 - Diagnóstico de legado, contrato de API e reconstrução assistida
@@ -160,6 +172,15 @@ src/
 - `npm run typecheck` → `tsc -b`
 - `npm run lint` → `oxlint`
 - `npm run preview` → servir build produção
+
+### 4.6 SEO, imagens e cases
+
+- `index.html` concentra canonical, Open Graph, Twitter Card, `theme-color` e JSON-LD de `ProfessionalService`.
+- `public/og-image.png` (1200x630) é o card social; `public/robots.txt` e `public/sitemap.xml` cobrem a home e os sete cases.
+- Páginas de case são HTML estático em `public/projetos/<slug>/index.html`, com `case.css` compartilhado; funcionam sem rewrite do SPA.
+- Cards do Hero e do Portfólio apontam para `/projetos/<slug>/index.html`; o link externo do site fica em link separado.
+- Imagens do portfólio usam `loading="lazy"`; a imagem principal de cada case é pré-carregada com `fetchpriority="high"`.
+- Alterações de domínio exigem atualizar `BRAND.url`, canonical, OG e sitemap.
 
 ---
 

@@ -6,6 +6,7 @@ export interface Project {
   url: string;
   image: string;
   imageAlt: string;
+  featured?: boolean;
 }
 
 export const PROJECTS: Project[] = [
@@ -19,6 +20,7 @@ export const PROJECTS: Project[] = [
     image: '/portfolio/heberton.png',
     imageAlt:
       'Página inicial do site de Heberton Pinheiro com banner sobre consultoria em acessibilidade e Libras.',
+    featured: true,
   },
   {
     id: 'moari-agro',
@@ -30,6 +32,7 @@ export const PROJECTS: Project[] = [
     image: '/portfolio/moari.png',
     imageAlt:
       'Página inicial da proposta digital da Moari Agro com palmeiras de açaí e chamada sobre o açaí da Amazônia.',
+    featured: true,
   },
   {
     id: 'alcenir-silva',
@@ -52,6 +55,7 @@ export const PROJECTS: Project[] = [
     image: '/portfolio/urbanrank.png',
     imageAlt:
       'Feed do UrbanRank mostrando uma manobra de skate, com placar e mapa de spots.',
+    featured: true,
   },
   {
     id: 'apa-locadora',
@@ -87,3 +91,5 @@ export const PROJECTS: Project[] = [
       'Página inicial do portfólio de Manausmacaco com obra de arte em destaque.',
   },
 ];
+
+export const FEATURED_PROJECTS = PROJECTS.filter((project) => project.featured);

@@ -1,5 +1,6 @@
-import { ArrowRight, Sparkles } from 'lucide-react';
+import { ArrowRight, ArrowUpRight, Sparkles } from 'lucide-react';
 import { BRAND } from '../../config';
+import { FEATURED_PROJECTS } from '../../data/projects';
 import { Button } from '../ui/Button';
 
 interface HeroProps {
@@ -118,6 +119,59 @@ export function Hero({ onOpenAgenda }: HeroProps) {
               RPA
             </span>
           </div>
+        </div>
+      </div>
+
+      <div className="relative mx-auto max-w-6xl px-6 pb-16">
+        <div className="flex flex-wrap items-end justify-between gap-3 border-t border-line pt-8">
+          <div>
+            <p className="text-xs uppercase tracking-[0.3em] text-accent">
+              Projetos entregues
+            </p>
+            <p className="mt-2 text-sm text-ink-muted">
+              Sites e produtos digitais que já estão no ar.
+            </p>
+          </div>
+          <a
+            href="#projetos"
+            className="nav-link-hover text-sm font-medium text-accent-strong hover:text-ink-hover"
+          >
+            Ver portfólio completo
+          </a>
+        </div>
+
+        <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {FEATURED_PROJECTS.map((project) => (
+            <a
+              key={project.id}
+              href={`/projetos/${project.id}/index.html`}
+              className="group overflow-hidden rounded-xl border border-line bg-surface transition-colors hover:border-accent/40"
+            >
+              <div className="aspect-[16/10] overflow-hidden border-b border-line bg-bg-sunken">
+                <img
+                  src={project.image}
+                  alt={project.imageAlt}
+                  width={800}
+                  height={500}
+                  loading="lazy"
+                  decoding="async"
+                  className="h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.03]"
+                />
+              </div>
+              <div className="flex items-center justify-between gap-3 px-4 py-3">
+                <div>
+                  <p className="text-[11px] uppercase tracking-[0.2em] text-accent">
+                    {project.category}
+                  </p>
+                  <p className="mt-0.5 text-sm font-medium">{project.name}</p>
+                </div>
+                <ArrowUpRight
+                  className="h-4 w-4 shrink-0 text-ink-subtle transition-colors group-hover:text-accent"
+                  aria-hidden="true"
+                />
+              </div>
+            </a>
+          ))}
         </div>
       </div>
     </section>

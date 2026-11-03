@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://muirakitan.com.br/sitemap.xml
