@@ -10,28 +10,6 @@ export interface Project {
 
 export const PROJECTS: Project[] = [
   {
-    id: 'alcenir-silva',
-    name: 'Alcenir Silva',
-    category: 'Site profissional',
-    description:
-      'Presença digital para personal trainer, com apresentação de serviços, acesso à conta e contato direto pelo WhatsApp.',
-    url: 'https://alcenirsilva.vercel.app/',
-    image: '/portfolio/alcenir.png',
-    imageAlt:
-      'Página inicial do site de Alcenir Silva, personal trainer, com foto de treino na academia.',
-  },
-  {
-    id: 'manausmacaco',
-    name: 'Manausmacaco',
-    category: 'Portfólio de arte',
-    description:
-      'Galeria digital para o artista Manausmacaco, reunindo quadros, vídeos e o perfil do artista em uma navegação visual.',
-    url: 'https://cocky-borg-98e919.netlify.app/',
-    image: '/portfolio/manausmacaco.png',
-    imageAlt:
-      'Página inicial do portfólio de Manausmacaco com obra de arte em destaque.',
-  },
-  {
     id: 'heberton-pinheiro',
     name: 'Heberton Pinheiro',
     category: 'Site institucional',
@@ -41,6 +19,17 @@ export const PROJECTS: Project[] = [
     image: '/portfolio/heberton.png',
     imageAlt:
       'Página inicial do site de Heberton Pinheiro com banner sobre consultoria em acessibilidade e Libras.',
+  },
+  {
+    id: 'alcenir-silva',
+    name: 'Alcenir Silva',
+    category: 'Site profissional',
+    description:
+      'Presença digital para personal trainer, com apresentação de serviços, acesso à conta e contato direto pelo WhatsApp.',
+    url: 'https://alcenirsilva.vercel.app/',
+    image: '/portfolio/alcenir.png',
+    imageAlt:
+      'Página inicial do site de Alcenir Silva, personal trainer, com foto de treino na academia.',
   },
   {
     id: 'urbanrank',
@@ -85,5 +74,16 @@ export const PROJECTS: Project[] = [
     image: '/portfolio/fortunato.png',
     imageAlt:
       'Página inicial da Fortunato Tapeçaria com sofá sob medida em destaque.',
+  },
+  {
+    id: 'manausmacaco',
+    name: 'Manausmacaco',
+    category: 'Portfólio de arte',
+    description:
+      'Galeria digital para o artista Manausmacaco, reunindo quadros, vídeos e o perfil do artista em uma navegação visual.',
+    url: 'https://cocky-borg-98e919.netlify.app/',
+    image: '/portfolio/manausmacaco.png',
+    imageAlt:
+      'Página inicial do portfólio de Manausmacaco com obra de arte em destaque.',
   },
 ];

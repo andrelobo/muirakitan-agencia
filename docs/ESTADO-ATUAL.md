@@ -41,13 +41,13 @@ A seção não foi adicionada ao menu do header: a navegação desktop já está
 
 ### 2.2 Projetos exibidos
 
-1. Alcenir Silva — site profissional
-2. Manausmacaco — portfólio de arte
-3. Heberton Pinheiro — site institucional (Libras/acessibilidade)
-4. UrbanRank — web app para skatistas
-5. Apa Locadora — landing page de locação de motos
-6. Moari Agro — proposta digital (não é site de cliente publicado)
-7. Fortunato Tapeçaria — e-commerce
+1. Heberton Pinheiro — site institucional (Libras/acessibilidade)
+2. Alcenir Silva — site profissional
+3. UrbanRank — web app para skatistas
+4. Apa Locadora — landing page de locação de motos
+5. Moari Agro — proposta digital (não é site de cliente publicado)
+6. Fortunato Tapeçaria — e-commerce
+7. Manausmacaco — portfólio de arte
 
 ### 2.3 Como as capturas foram geradas
 
