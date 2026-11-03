@@ -2,10 +2,10 @@
 
 > **Snapshot de sessão.** Documento curto e volátil: descreve *onde o projeto está agora* para retomar o contexto rapidamente. Para arquitetura e regras permanentes, ver `CONTEXT.md`; para limites operacionais, `AGENTS.md`.
 
-**Última atualização:** terça-feira, 03/11/2026 19:35
+**Última atualização:** terça-feira, 03/11/2026 19:55
 **Branch:** `main`
-**HEAD:** `main` sincronizada com `origin/main` (ver `git log -1`)
-**Working tree:** limpo após o commit desta sessão
+**HEAD:** `32a9d43` — `feat(seo): adiciona cases, imagens e metadados`
+**Working tree:** limpo; `main` sincronizada com `origin/main`
 
 ---
 
@@ -100,6 +100,8 @@ As páginas de case usam URLs `.html` para funcionar tanto no dev server quanto 
 | `npm run lint` | ✅ 0 warnings, 0 errors (33 arquivos) |
 | `npm run build` | ✅ `dist/` gerado: JS 331,36 kB (101,28 kB gzip), CSS 29,93 kB (6,44 kB gzip) |
 | Verificação visual | ✅ hero com faixa de projetos, cases e mobile 390px via Chrome headless |
+
+> O servidor de desenvolvimento usado na verificação foi encerrado ao fim da sessão.
 | `npm audit --omit=dev` | ✅ 0 vulnerabilidades |
 
 ---
@@ -134,3 +136,15 @@ As páginas de case usam URLs `.html` para funcionar tanto no dev server quanto 
 
 - **31/10/2026** — tema escuro verde baseado no `muirakitan-model`, correções de logo/botões/Hero/Agenda, renomeação ZERA → Jupati, governança MEF-1 (`AGENTS.md`, `CONTEXT.md`, `docs/mef/**`).
 - **03/11/2026** — análise do repositório (bug de data, persistência, acessibilidade, drift de docs), seção Portfólio com 7 projetos, seção de engenharia reversa com oferta comercial e roteiro de piloto, revisão de documentação (tema escuro, referências MEF, template ADR) e base de SEO com OG image, sitemap, cases estáticos e faixa de projetos no hero.
+
+---
+
+## 7. Plano para a próxima sessão
+
+1. **Revisar os cases** — textos, links, classificação de Moari como proposta e dados públicos nas capturas.
+2. **Corrigir o bug de data** dos exports de calendário (`src/lib/contact.ts:34` e `:53`) e endurecer o schema de `loadBookings`.
+3. **Recapturar imagens** em 1600x1000 para hero/retina e regenerar o OG image se necessário.
+4. **Validar SEO em produção** — Search Console, sitemap, canonical e analytics; decidir se “Projetos” entra no menu e se o showcase vira carrossel.
+5. **Engenharia reversa** — escolher o alvo piloto, liberar ambiente isolado e iniciar RE-01 com autorização registrada.
+
+Antes de retomar: `npm run dev` e conferir `npm run typecheck && npm run lint && npm run build`.
