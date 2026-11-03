@@ -1,10 +1,11 @@
 # ESTADO-ATUAL.md — Muirakitan Agência
 
-> **Snapshot de sessão.** Documento curto e volátil: descreve *onde o projeto está agora* para retomar o contexto rapidamente. Deve ser reescrito a cada sessão de trabalho. Para arquitetura e regras permanentes, ver `CONTEXT.md`; para limites operacionais, `AGENTS.md`.
+> **Snapshot de sessão.** Documento curto e volátil: descreve *onde o projeto está agora* para retomar o contexto rapidamente. Para arquitetura e regras permanentes, ver `CONTEXT.md`; para limites operacionais, `AGENTS.md`.
 
-**Última atualização:** sábado, 31/10/2026 19:36
-**Branch:** `main` (sincronizada com `origin/main`)
-**HEAD:** `abfbc11`
+**Última atualização:** terça-feira, 03/11/2026 19:05
+**Branch:** `main`
+**HEAD:** commit desta sessão (`feat: adiciona portfólio e engenharia reversa`)
+**Working tree:** limpo após o commit; `origin/main` atualizado
 
 ---
 
@@ -24,109 +25,84 @@ npm run typecheck && npm run lint && npm run build
 
 ---
 
-## 2. O que foi feito na sessão de 31/10/2026
+## 2. Sessão de 03/11/2026 — seção Portfólio
 
-### 2.1 Tema escuro verde (concluído)
+### 2.1 O que foi feito
 
-O site estava renderizando **sem estilo** porque o `@theme` de `src/styles.css` não declarava os tokens usados pelos componentes (`bg-bg`, `bg-bg-subtle`, `bg-bg-muted`, `bg-bg-sunken`, `border-divide`, `border-divider`, `text-ink-hover`). No Tailwind v4, classe com token inexistente gera **zero CSS** — só as utilities genéricas funcionavam.
+| Arquivo | Mudança |
+|---|---|
+| `src/components/sections/Portfolio.tsx` | Nova seção `#projetos`: grid responsivo (1/2/3 colunas), cards com captura, categoria, descrição e link externo; card final de CTA para `#agenda` |
+| `src/data/projects.ts` | Dados dos 7 projetos: nome, categoria, descrição, URL, imagem e texto alternativo |
+| `public/portfolio/*.png` | Capturas dos 7 sites em 800x500, PNG com 256 cores (~780 kB no total) |
+| `src/App.tsx` | Seção inserida entre `Services` e `Methodology` |
+| `CONTEXT.md` | Portfólio documentado na estrutura, tabela de seções e dados |
 
-A paleta foi extraída do CSS real de `https://muirakitan-model.vercel.app/login`:
+A seção não foi adicionada ao menu do header: a navegação desktop já está cheia e ganhar um sétimo item exigiria rever o layout. O acesso é por scroll, logo após Serviços.
 
-| Token | Valor | Papel |
-|---|---|---|
-| `--color-bg` | `#082b37` | fundo da página |
-| `--color-bg-subtle` | `#0d3441` | header, cards |
-| `--color-bg-muted` | `#12404e` | tags, hover |
-| `--color-bg-sunken` | `#062028` | poços, indicadores inativos |
-| `--color-ink` | `#f8fcfb` | texto principal |
-| `--color-ink-hover` | `#ffffff` | texto em hover |
-| `--color-ink-muted` | `#c9dbd7` | texto secundário |
-| `--color-ink-subtle` | `#9fb8b4` | texto terciário |
-| `--color-accent` | `#40d8c4` | mint (green-300 da referência) |
-| `--color-accent-strong` | `#9cece1` | mint claro (green-200) |
-| `--color-accent-soft` | `#0f3b46` | chips e estados selecionados |
-| `--color-divide` / `--color-divider` | `#1c4a57` | bordas |
+### 2.2 Projetos exibidos
 
-Também foram mantidos os aliases antigos (`--color-surface`, `--color-surface-muted`, `--color-line`, `--color-line-strong`), porque `Hero.tsx` e `Agenda.tsx` restaurados do git ainda usam esses nomes.
+1. Alcenir Silva — site profissional
+2. Manausmacaco — portfólio de arte
+3. Heberton Pinheiro — site institucional (Libras/acessibilidade)
+4. UrbanRank — web app para skatistas
+5. Apa Locadora — landing page de locação de motos
+6. Moari Agro — proposta digital (não é site de cliente publicado)
+7. Fortunato Tapeçaria — e-commerce
 
-Utilitários de marca em `src/styles.css`: `mtk-grid-backdrop`, `mtk-glow`, `mtk-scrollbar`, `gradient-accent`, `nav-link`, `nav-link-hover`.
+### 2.3 Como as capturas foram geradas
 
-Ajustes de contraste (em `@layer utilities`):
-- `.bg-accent.text-white` e `.bg-accent-strong.text-white` → texto escuro `#082b37` (botão mint igual à referência).
-- `.bg-ink\/60.bg-ink\/60` → scrim escuro `rgb(6 32 40 / 0.72)` no overlay do modal.
+Chrome headless, viewport 1280x800, `--virtual-time-budget=12000`, e redução para 800x500 com ImageMagick (`-colors 256`). Se os sites mudarem, refazer as capturas e manter a proporção 16:10.
 
-### 2.2 Correções de UI
+### 2.4 Seção de engenharia reversa
 
-| Arquivo | Problema | Correção |
-|---|---|---|
-| `src/components/Brand.tsx` | wordmark "muirakitan" invisível (logo escura sobre fundo escuro) | passou a usar `logo-horizontal-white.svg` |
-| `src/components/ui/Button.tsx` | variante `default` usava `bg-bg`, deixando o CTA primário escuro sobre escuro | revertido para `bg-accent text-white` (estado do commit `8d3724c`) |
-| `src/components/sections/Hero.tsx` | card da direita era um placeholder com texto sobreposto ("ILUSTRAÇÃO CONCEITUAL") | restaurado do commit `8d3724c` |
-| `src/components/sections/Agenda.tsx` | `<aside>` do resumo havia sido removido → coluna direita vazia | restaurado do commit `8d3724c` |
+| Arquivo | Mudança |
+|---|---|
+| `src/components/sections/ReverseEngineering.tsx` | Nova seção `#engenharia-reversa`, após o Portfólio: três ofertas, card de compromisso e CTA para WhatsApp |
+| `src/data/reverse.ts` | Dados das ofertas: diagnóstico de legado, contrato de API e reconstrução assistida |
+| `src/App.tsx` | Seção inserida entre `Portfolio` e `Methodology` |
+| `docs/comercial/engenharia-reversa-oferta.md` | Oferta comercial, escopo, limites, critérios de aceite e qualificação |
+| `docs/operacao/piloto-engenharia-reversa.md` | Roteiro do primeiro piloto, cronograma, métricas e go/no-go |
 
-### 2.3 Conteúdo
-
-- `ZERA` → `Jupati` em `Methodology.tsx`, `data/faq.ts` e `README.md`.
-- A URL do README continua `github.com/andrelobo/zera-backend` porque `jupati-backend` retorna **404**. Atualizar quando o repositório for renomeado.
-
-### 2.4 Governança
-
-- Adicionados `AGENTS.md`, `CONTEXT.md` e `docs/mef/**` (MEF-1 Essencial).
+A seção não altera o fluxo de agendamento: o CTA abre o WhatsApp com mensagem pronta, porque o diagnóstico de legado não é uma das oito frentes do formulário. A oferta está em rascunho; o laboratório segue em Fase 0 e o piloto ainda não foi executado.
 
 ---
 
-## 3. Commits da sessão
-
-```
-abfbc11  refactor(content): renomeia ZERA para Jupati
-8fa5e1b  feat(theme): aplica tema escuro verde e corrige tokens do Tailwind
-c461671  docs(mef): adiciona governanca MEF-1 (AGENTS.md, CONTEXT.md, docs/mef)
-```
-
-Todos enviados para `origin/main`.
-
----
-
-## 4. Estado verificado
+## 3. Estado verificado
 
 | Gate | Resultado |
 |---|---|
 | `npm run typecheck` | ✅ sem erros |
-| `npm run lint` | ✅ sem warnings |
-| `npm run build` | ✅ `dist/` gerado |
-| CSS gerado | ~27,6 kB (antes do fix: 0,43 kB) |
-| Dev server | ✅ `http://localhost:5173` HTTP 200 |
-| Inspeção visual | ✅ desktop 1440px e mobile 390px (Chrome headless) |
-
-Classes confirmadas no CSS compilado: `bg-bg`, `bg-bg-subtle`, `bg-bg-muted`, `bg-bg-sunken`, `bg-surface`, `bg-surface-muted`, `border-divide`, `border-divider`, `border-line`, `border-line-strong`, `text-ink-hover`, `bg-ink/60`.
+| `npm run lint` | ✅ 0 warnings, 0 errors (33 arquivos) |
+| `npm run build` | ✅ `dist/` gerado: JS 329,15 kB (101,03 kB gzip), CSS 29,71 kB (6,42 kB gzip) |
+| Verificação visual | ✅ seção de engenharia reversa em desktop 1440px e mobile 390px via Chrome headless |
+| `npm audit --omit=dev` | ✅ 0 vulnerabilidades |
 
 ---
 
-## 5. Pendências e próximos passos
+## 4. Pendências e próximos passos
 
-1. **`.section` está indefinida.** A classe é usada em várias seções mas não existe no CSS (é inerte de propósito — defini-la com `max-width`/`padding` quebraria o layout atual). Ou remover do markup, ou implementar junto com um ajuste de layout.
-2. **Inconsistência de largura.** Header e Hero usam `max-w-6xl`; as demais seções usam `max-w-7xl`. Alinhar é decisão de design.
-3. **URL do repositório no README** (`zera-backend`) ainda não corresponde ao nome Jupati.
-4. **`logo-horizontal-dark.svg`** ficou sem uso (mantido em `public/brand/assets/svg/`).
-5. **Nada foi testado em navegador real** — a verificação visual foi feita via Chrome headless (screenshots). Fluxo de agendamento (passos 1→2→3, dialog de "Meus agendamentos", persistência em `localStorage`) não foi exercitado por interação.
-6. **Sem testes automatizados** no projeto.
+1. **Revisar o conteúdo do portfólio**: confirmar textos, URLs e principalmente a classificação de Moari Agro como *proposta*, não entrega. Revisar também as capturas (mostram dados de contato públicos dos sites).
+2. **Decidir o menu**: incluir “Projetos” no header ou manter apenas a seção? Se incluir, testar 1024px e 1280px — o header já quebra “Como funciona” em duas linhas.
+3. **Bug de data nos calendários**: `googleCalendarUrl` e `toIcsDate` usam `new Date('YYYY-MM-DD')`, que interpreta UTC e adianta um dia em Manaus. Corrigir com `fromISODate` (`src/lib/contact.ts:34` e `:53`).
+4. **Persistência frágil**: `loadBookings` valida apenas `id`/`date`/`time`; serviço desconhecido ou data inválida pode derrubar “Meus agendamentos”. Validar o schema antes de renderizar.
+5. **Itens de UI já conhecidos**: classe `.section` indefinida; larguras `max-w-6xl` × `max-w-7xl`; README descrevendo tema claro; referências MEF para arquivos que não existem.
+6. **Sem testes e sem CI** — o fluxo de agenda e os helpers de data são os candidatos naturais.
+7. **Piloto de engenharia reversa** — concluir Fase 1 (disco/isolamento), escolher alvo open source, registrar autorização e rodar RE-01…RE-06. Sem case, não usar os prazos da oferta como promessa comercial.
+8. **Ferramentas de binário** — Ghidra, Binwalk, Frida e Rizin ainda não instalados; não vender firmware/análise de binário antes da Fase 2.
 
 ---
 
-## 6. Armadilhas conhecidas
+## 5. Armadilhas conhecidas
 
-- **Tailwind é v4.** O entry correto é `@import "tailwindcss";` + `@theme { --color-* }`. `@tailwind base/components/utilities` é sintaxe v3 e **não funciona** aqui (foi a causa de uma tentativa de correção que piorou o problema).
-- **Classe sem token = CSS vazio.** Ao usar uma cor nova, declare o token no `@theme` *e* confirme que ela aparece no CSS compilado.
-- **Tailwind v4 remove tokens não usados** do CSS final (tree-shaking). Token que aparece no `@theme` mas não no `dist/` significa que nenhum componente o usa.
+- **Tailwind é v4.** Entry: `@import "tailwindcss"` + `@theme { --color-* }`. `@tailwind base/components/utilities` não funciona.
+- **Classe sem token = CSS vazio.** Declare o token no `@theme` e confira no CSS compilado.
+- **Tailwind v4 remove tokens não usados** do CSS final.
+- **`border` sozinho usa `currentColor`** (texto quase branco no tema escuro). Use `border-divide` ou `border-line`.
 - **`AGENTS.md` proíbe** `rm -rf`, `git clean`, `git reset --hard` e alteração de `package.json` / `vite.config.ts` / `tsconfig.json` / `.oxlintrc.json` sem ADR.
 
 ---
 
-## 7. Backups da sessão
+## 6. Histórico resumido
 
-Cópias dos arquivos substituídos ficaram em `/tmp/opencode/` (temporário — **não sobrevive a reinício**):
-
-- `/tmp/opencode/Hero.backup.tsx` — versão com o card placeholder
-- `/tmp/opencode/Agenda.backup.tsx` — versão sem o `<aside>` do resumo
-
-O conteúdo definitivo de ambos está no git (`8d3724c`).
+- **31/10/2026** — tema escuro verde baseado no `muirakitan-model`, correções de logo/botões/Hero/Agenda, renomeação ZERA → Jupati, governança MEF-1 (`AGENTS.md`, `CONTEXT.md`, `docs/mef/**`).
+- **03/11/2026** — análise do repositório (bug de data, persistência, acessibilidade, drift de docs), seção Portfólio com 7 projetos e seção de engenharia reversa com oferta comercial e roteiro de piloto.

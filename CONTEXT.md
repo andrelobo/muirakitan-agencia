@@ -21,16 +21,18 @@
 ```
 src/
 ├── components/           # Componentes React (seções, UI, headers, footers)
-│   ├── sections/         # Páginas de seção (Hero, Services, Agenda, etc.)
+│   ├── sections/         # Páginas de seção (Hero, Services, Portfolio, ReverseEngineering, Agenda, etc.)
 │   ├── ui/               # Componentes de UI genéricos (Button, ServiceIcon)
 │   ├── Header.tsx        # Barra de navegação principal
 │   ├── Footer.tsx        # Rodapé
 │   ├── Brand.tsx         # Logo da marca
 │   └── FloatingContact.tsx # Flutuante de WhatsApp
-├── data/                 # Dados estáticos (services, process, faq)
-│   ├── services.ts       # 7 serviços oferecidos
+├── data/                 # Dados estáticos (services, process, faq, projects, reverse)
+│   ├── services.ts       # 8 serviços oferecidos
 │   ├── process.ts        # 4 etapas do diagnóstico
-│   └── faq.ts            # 10 perguntas frequentes
+│   ├── faq.ts            # 10 perguntas frequentes
+│   ├── projects.ts       # 7 projetos do portfólio
+│   └── reverse.ts        # 3 ofertas de engenharia reversa
 ├── hooks/                # Hooks React
 │   └── useBookings.ts    # Gerenciamento de agenda no localStorage
 ├── lib/                  # Funções utilitárias (bookings, slots, contacts, dates, format, cn)
@@ -46,6 +48,8 @@ src/
 |-------|---------|-----------|
 | Hero | `#topo` | Section principal com proposta de valor |
 | Serviços | `#servicos` | Grid de 8 frentes de serviço |
+| Portfólio | `#projetos` | Galeria de 7 projetos com links externos |
+| Engenharia reversa | `#engenharia-reversa` | Ofertas de diagnóstico de legado, contrato de API e reconstrução |
 | Metodologia | `#metodologia` | Como IA com governança é aplicada |
 | Processo | `#processo` | Do diagnóstico à entrega |
 | Agenda | `#agenda` | Agenda web para agendamento |
@@ -54,9 +58,19 @@ src/
 
 ### 2.3 Dados Principais
 
-#### Serviços (7)
+#### Serviços (8)
 - IA governada, sites, apps, automações, IA, APIs, contabil/ERP, RPA
 - Cada serviço tem: id, title, shortTitle, tagline, description, highlights, deliverables, durationMinutes, icon
+
+#### Portfólio (7 projetos)
+- Alcenir Silva (site profissional), Manausmacaco (portfólio de arte), Heberton Pinheiro (site institucional), UrbanRank (web app), Apa Locadora (landing page), Moari Agro (proposta digital) e Fortunato Tapeçaria (e-commerce)
+- Cada projeto tem: id, name, category, description, url, image, imageAlt
+- Capturas em `public/portfolio/`, 800x500, PNG otimizado
+
+#### Engenharia reversa (3 ofertas)
+- Diagnóstico de legado, contrato de API e reconstrução assistida
+- Cada oferta tem: id, icon, title, description, deliverables
+- Oferta comercial em `docs/comercial/engenharia-reversa-oferta.md`; piloto em `docs/operacao/piloto-engenharia-reversa.md`
 
 #### Processo (4 etapas)
 1. Diagnóstico (Dias 1 a 3)
@@ -175,6 +189,10 @@ Baseado em `AGENTS.md`, o agente deve obedecer:
 - **`src/types.ts`**: Tipos do projeto
 - **`src/config.ts`**: Configurações de negócio
 - **`src/data/services.ts`**: Dados de serviços
+- **`src/data/projects.ts`**: Dados do portfólio
+- **`src/data/reverse.ts`**: Ofertas de engenharia reversa
+- **`docs/comercial/engenharia-reversa-oferta.md`**: Oferta comercial da linha
+- **`docs/operacao/piloto-engenharia-reversa.md`**: Roteiro do primeiro piloto
 - **`src/data/process.ts`**: Etapas do processo
 - **`src/data/faq.ts`**: Perguntas frequentes
 
@@ -182,4 +200,4 @@ Baseado em `AGENTS.md`, o agente deve obedecer:
 
 *Contexto persistente: Este documento deve ser atualizado sempre que nova arquitetura, regra de negócio ou decisão técnica for introduzida no projeto. Atualizações devem ser registradas como ADRs quando relevante.*
 
-*Última atualização: Sat Oct 31 2026*
+*Última atualização: Tue Nov 03 2026*

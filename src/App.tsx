@@ -8,7 +8,9 @@ import { Contact } from './components/sections/Contact';
 import { Faq } from './components/sections/Faq';
 import { Hero } from './components/sections/Hero';
 import { Methodology } from './components/sections/Methodology';
+import { Portfolio } from './components/sections/Portfolio';
 import { Process } from './components/sections/Process';
+import { ReverseEngineering } from './components/sections/ReverseEngineering';
 import { Services } from './components/sections/Services';
 import { useBookings } from './hooks/useBookings';
 import type { ServiceId } from './types';
@@ -43,6 +45,8 @@ export default function App() {
       <main>
         <Hero onOpenAgenda={scrollToAgenda} />
         <Services onSelectService={handleSelectService} />
+        <Portfolio />
+        <ReverseEngineering />
         <Methodology />
         <Process />
         <Agenda

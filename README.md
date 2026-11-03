@@ -86,8 +86,8 @@ npm run preview    # serve o build de produção
 
 Fluxo em três passos, em `src/components/sections/Agenda.tsx`:
 
-1. **Serviço** — sete frentes: sites, aplicativos, automações, uso correto de
-   I.A., APIs, sistemas contábeis/ERP e RPA (`src/data/services.ts`).
+1. **Serviço** — oito frentes: IA governada, sites, aplicativos, automações, uso
+   correto de I.A., APIs, sistemas contábeis/ERP e RPA (`src/data/services.ts`).
 2. **Data e hora** — agenda de segunda a sexta (9h–18h) e sábado (9h–13h),
    com antecedência mínima de 2h e janela de 21 dias.
 3. **Seus dados** — nome, empresa, e-mail, WhatsApp, observações e autorização
@@ -111,15 +111,32 @@ chamada de API — o resto da interface não muda.
 O painel **Meus agendamentos** (cabeçalho e botão flutuante) lista, permite
 reenviar o pedido e cancelar.
 
+## Portfólio
+
+A seção `#projetos` (`src/components/sections/Portfolio.tsx`) exibe sete projetos
+em `src/data/projects.ts`, com capturas 16:10 em `public/portfolio/` e links
+externos. Para adicionar um projeto, inclua o registro em `projects.ts` e a
+imagem correspondente (800x500).
+
+## Engenharia reversa assistida
+
+A seção `#engenharia-reversa` (`src/components/sections/ReverseEngineering.tsx`)
+apresenta três ofertas para sistemas existentes: diagnóstico de legado, contrato
+de API e reconstrução assistida. Os dados ficam em `src/data/reverse.ts`.
+
+A oferta comercial está em `docs/comercial/engenharia-reversa-oferta.md` e o
+roteiro do primeiro piloto em `docs/operacao/piloto-engenharia-reversa.md`.
+Nenhuma análise começa sem autorização escrita do titular.
+
 ## Estrutura
 
 ```
 src/
 ├── components/
 │   ├── Header.tsx, Footer.tsx, Brand.tsx, FloatingContact.tsx
-│   ├── sections/  Hero, Services, Process, Agenda, BookingsDialog, Faq, Contact
+│   ├── sections/  Hero, Services, Portfolio, ReverseEngineering, Process, Agenda, BookingsDialog, Faq, Contact
 │   └── ui/        Button, ServiceIcon
-├── data/          services.ts, process.ts, faq.ts
+├── data/          services.ts, process.ts, faq.ts, projects.ts, reverse.ts
 ├── hooks/         useBookings.ts
 ├── lib/           bookings, slots, dates, contact, format, cn
 ├── config.ts      marca, contato e regras da agenda
