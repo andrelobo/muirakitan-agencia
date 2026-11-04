@@ -46,7 +46,6 @@ export default function App() {
         <Hero onOpenAgenda={scrollToAgenda} />
         <Services onSelectService={handleSelectService} />
         <Portfolio />
-        <ReverseEngineering />
         <Methodology />
         <Process />
         <Agenda
@@ -57,6 +56,7 @@ export default function App() {
           onServiceChange={setServiceId}
           onOpenBookings={() => setDialogOpen(true)}
         />
+        <ReverseEngineering />
         <Faq />
         <Contact />
       </main>
