@@ -1,9 +1,9 @@
 export const BRAND = {
   name: 'Muirakitan Agência',
   legalName: 'Muirakitan Tecnologia',
-  eyebrow: 'Agência de tecnologia com IA governada',
+  eyebrow: 'Sites, lojas online e automação · Manaus',
   tagline:
-    'Desenvolvimento assistido por IA com governança. Aplicativos, sites, automações e agentes com regras, validações e segurança para sistemas em produção.',
+    'Sites, lojas online e automação para empresas de Manaus. Você fala direto com quem faz — sem intermediário e sem termo técnico.',
   description:
     'Desenvolvemos com IA governada: criamos contexto, agentes e guardrails para que sua equipe use IA com segurança. Também entregamos sites, aplicativos, integrações, sistemas contábeis sob medida e RPA com rastreabilidade e testes.',
   url: 'https://muirakitan.com.br',

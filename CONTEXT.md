@@ -8,6 +8,7 @@
 
 **Nome**: Muirakitan Agência  
 **Propósito**: Site institucional para captação de reuniões de diagnóstico de tecnologia com IA governada.  
+**Público-alvo principal**: dono de negócio local (pequeno e médio comércio e serviço, foco em Manaus). Ver `docs/adr/ADR-001-publico-alvo-dono-de-negocio-local.md`.  
 **Stack**: React 19 + TypeScript + Vite 8 + Tailwind CSS 4  
 **Deploy**: Estático (dist/) em Vercel/Netlify/Cloudflare Pages  
 **Hospedagem**: Estática, CDN-based

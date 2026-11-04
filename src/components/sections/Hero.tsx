@@ -8,10 +8,10 @@ interface HeroProps {
 }
 
 const STATS = [
-  { value: '7', label: 'linhas de serviço' },
+  { value: 'Manaus', label: 'atendimento local' },
   { value: '48h', label: 'para o primeiro retorno' },
   { value: '90d', label: 'de garantia na entrega' },
-  { value: '100%', label: 'código no seu repositório' },
+  { value: '7', label: 'projetos no portfólio' },
 ];
 
 export function Hero({ onOpenAgenda }: HeroProps) {
@@ -34,20 +34,19 @@ export function Hero({ onOpenAgenda }: HeroProps) {
           </p>
 
           <h1 className="mt-6 text-4xl font-semibold leading-tight sm:text-5xl lg:text-6xl">
-            Usamos IA com governança para construir o software que a sua
-            operação{' '}
-            <span className="text-accent">precisa para crescer com segurança</span>.
+            Seu negócio na internet,{' '}
+            <span className="text-accent">pronto para vender</span>.
           </h1>
 
           <p className="mt-6 max-w-xl text-lg text-ink-muted">{BRAND.tagline}</p>
 
           <div className="mt-9 flex flex-wrap items-center gap-4">
             <Button size="lg" onClick={onOpenAgenda}>
-              Agendar reunião gratuita
+              Agendar conversa gratuita
               <ArrowRight className="h-4 w-4" aria-hidden="true" />
             </Button>
             <Button size="lg" variant="outline" asChild>
-              <a href="#servicos">Ver serviços</a>
+              <a href="#projetos">Ver projetos</a>
             </Button>
           </div>
 
@@ -72,15 +71,15 @@ export function Hero({ onOpenAgenda }: HeroProps) {
               Fale com quem vai construir
             </h2>
             <p className="mt-3 text-sm leading-relaxed text-ink-muted">
-              Escolha o serviço, o dia e o horário. A conversa de diagnóstico
-              acontece em até 60 minutos e termina com um próximo passo claro.
+              Escolha o dia e o horário. A conversa dura até 60 minutos e
+              termina com um próximo passo claro — sem enrolação.
             </p>
 
             <ul className="mt-7 space-y-4 text-sm text-ink">
               {[
                 'Sem custo e sem compromisso',
-                'Diagnóstico do processo atual',
-                'Escopo, prazo e investimento por escrito',
+                'Entendo o seu negócio antes de propor',
+                'Prazo e valor por escrito',
               ].map((item) => (
                 <li key={item} className="flex items-start gap-3">
                   <span
@@ -107,16 +106,16 @@ export function Hero({ onOpenAgenda }: HeroProps) {
             aria-hidden="true"
           >
             <span className="rounded-xl border border-line bg-surface-muted py-4">
-              Apps
+              Sites
             </span>
             <span className="rounded-xl border border-line bg-surface-muted py-4">
-              Sites
+              Lojas online
             </span>
             <span className="rounded-xl border border-line bg-surface-muted py-4">
               Automação
             </span>
             <span className="rounded-xl border border-line bg-surface-muted py-4">
-              RPA
+              Sistemas
             </span>
           </div>
         </div>
