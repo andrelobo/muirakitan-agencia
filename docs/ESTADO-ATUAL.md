@@ -132,10 +132,14 @@ Decisão de público registrada em `docs/adr/ADR-001-publico-alvo-dono-de-negoci
 | `src/components/sections/Agenda.tsx` | Triagem "O que você precisa?", principais primeiro, secundários sob divisor |
 | `src/components/sections/Contact.tsx` | Texto sem jargão; checklist e mensagem do WhatsApp reescritos |
 | `index.html` | `<title>`, meta description, OG/Twitter e JSON-LD alinhados ao público |
+| `src/components/sections/Methodology.tsx` | Deixa de repetir o passo a passo (que é do `Process`) e passa a explicar o que garante a entrega |
+| `src/components/Header.tsx` | CTA "Agendar reunião" → "Agendar conversa", alinhado ao hero |
 
 **Divisão dos 8 serviços.** 3 principais (`sites`, `apps`, `automacoes`) para quem quer vender ou organizar a operação; 5 secundários (`ia-governada`, `ia`, `apis`, `contabil`, `rpa`) para quem já tem sistema ou equipe técnica. O campo `group` é a fonte da verdade — as listas `PRIMARY_SERVICES` e `SECONDARY_SERVICES` são derivadas dele, sem duplicar dados.
 
 **Correções de conteúdo encontradas no caminho.** A estatística "7 linhas de serviço" estava errada (são 8). "100% código no seu repositório" não comunica nada para o público novo. Os CTAs "Agendar sites" / "Agendar sistemas" viraram "Quero um site" / "Quero um sistema" / "Quero automatizar" (`ctaLabel`). A faixa "Não sabe por onde começar?" agora abre a agenda sem serviço pré-selecionado, em vez de forçar `sites`.
+
+**Metodologia × Como funciona.** As duas seções descreviam o mesmo passo a passo em linguagens diferentes — redundância que só piorava para quem não é técnico. `Process` fica com o passo a passo (diagnóstico → escopo → execução → entrega). `Methodology` passa a responder outra pergunta: *o que garante que isso vai dar certo* — entender antes de construir, travar o que é crítico, acompanhamento visível e entrega com prova. O jargão (AGENTS.md, gates, determinístico) saiu do título e do corpo; sobrou no rodapé como prova, no caso Jupati.
 
 **Preço:** adiado por decisão do fundador. A vitrine não menciona valores.
 
@@ -147,13 +151,13 @@ Decisão de público registrada em `docs/adr/ADR-001-publico-alvo-dono-de-negoci
 |---|---|
 | `npm run typecheck` | ✅ sem erros |
 | `npm run lint` | ✅ 0 warnings, 0 errors (33 arquivos) |
-| `npm run build` | ✅ `dist/` gerado: JS 332,15 kB (101,66 kB gzip), CSS 29,93 kB (6,44 kB gzip) |
+| `npm run build` | ✅ `dist/` gerado: JS 333,95 kB (102,16 kB gzip), CSS 30,04 kB (6,46 kB gzip) |
 | `npm audit --omit=dev` | ✅ 0 vulnerabilidades |
-| Verificação visual | ✅ hero, cases e mobile 390px via Chrome headless |
+| Verificação visual | ✅ hero, serviços, metodologia, agenda e mobile 390px via Chrome headless |
 | Correção de fuso | ✅ Google Calendar e ICS conferidos com `TZ=America/Manaus` |
 | Validação de bookings | ✅ 10 casos de schema via `jiti` |
 
-> O servidor de desenvolvimento usado na verificação foi encerrado ao fim da sessão.
+> `npm run dev` está no ar em `http://localhost:5173` (Vite, HMR).
 
 ---
 
@@ -163,14 +167,13 @@ Decisão de público registrada em `docs/adr/ADR-001-publico-alvo-dono-de-negoci
 2. **Decidir o menu**: incluir “Projetos” no header ou manter apenas a seção? Se incluir, testar 1024px e 1280px — o header já quebra “Como funciona” em duas linhas.
 3. **Itens de UI já conhecidos**: classe `.section` indefinida; larguras `max-w-6xl` × `max-w-7xl`.
 4. **Preço** — adiado por decisão do fundador em 04/11. A vitrine de serviços não cita valores; quando houver números, criar uma faixa "a partir de" nos 3 cards principais.
-5. **Metodologia ainda técnica** — abre com "Como aplicamos IA com governança em sistemas reais". Para o público declarado na ADR-001, o título deveria falar de como o trabalho acontece; o conteúdo de governança pode ficar no corpo.
-6. **Analytics** — sem medição, a decisão da ADR-001 continua sendo hipótese. Instalar Plausible/Umami exige ADR (mexe em `index.html`).
-7. **Sem testes e sem CI** — o fluxo de agenda e os helpers de data são os candidatos naturais. A correção de 04/11 foi verificada com `jiti` em script avulso; virar teste de verdade exige decidir a stack (Vitest) e alterar `package.json`, o que precisa de ADR.
-8. **Piloto de engenharia reversa** — concluir Fase 1 (disco/isolamento), escolher alvo open source, registrar autorização e rodar RE-01…RE-06. Sem case, não usar os prazos da oferta como promessa comercial.
-9. **Ferramentas de binário** — Ghidra, Binwalk, Frida e Rizin ainda não instalados; não vender firmware/análise de binário antes da Fase 2.
-10. **Imagens dos cases** — hoje em 800x500. Recapturar em 1600x1000 para hero/retina e manter os `alt` descritivos.
-11. **Search Console** — validar sitemap, canonical e indexação depois do deploy.
-12. **Conteúdo dos cases** — revisar textos e claims; Moari é proposta, não entrega. Não inventar métricas.
+5. **Analytics** — sem medição, a decisão da ADR-001 continua sendo hipótese. Instalar Plausible/Umami exige ADR (mexe em `index.html`).
+6. **Sem testes e sem CI** — o fluxo de agenda e os helpers de data são os candidatos naturais. A correção de 04/11 foi verificada com `jiti` em script avulso; virar teste de verdade exige decidir a stack (Vitest) e alterar `package.json`, o que precisa de ADR.
+7. **Piloto de engenharia reversa** — concluir Fase 1 (disco/isolamento), escolher alvo open source, registrar autorização e rodar RE-01…RE-06. Sem case, não usar os prazos da oferta como promessa comercial.
+8. **Ferramentas de binário** — Ghidra, Binwalk, Frida e Rizin ainda não instalados; não vender firmware/análise de binário antes da Fase 2.
+9. **Imagens dos cases** — hoje em 800x500. Recapturar em 1600x1000 para hero/retina e manter os `alt` descritivos.
+10. **Search Console** — validar sitemap, canonical e indexação depois do deploy.
+11. **Conteúdo dos cases** — revisar textos e claims; Moari é proposta, não entrega. Não inventar métricas.
 
 ---
 
@@ -201,8 +204,8 @@ Decisão de público registrada em `docs/adr/ADR-001-publico-alvo-dono-de-negoci
 2. **Decidir sobre testes automatizados** — a correção de 04/11 ficou coberta só por script avulso com `jiti`. Introduzir Vitest exige alterar `package.json`, então precisa de ADR antes (`docs/mef/templates/ADR.md`).
 3. **Recapturar imagens** em 1600x1000 para hero/retina e regenerar o OG image se necessário.
 4. **Validar SEO em produção** — Search Console, sitemap, canonical e analytics; decidir se “Projetos” entra no menu e se o showcase vira carrossel.
-5. **Metodologia** — reescrever o título para o público da ADR-001 e rebaixar o jargão para o corpo do texto.
-5. **Engenharia reversa** — escolher o alvo piloto, liberar ambiente isolado e iniciar RE-01 com autorização registrada.
-6. **UI pendente** — definir se `.section` vira classe real ou sai do markup, e unificar `max-w-6xl` × `max-w-7xl`.
+5. **Ordem das seções** — `ReverseEngineering` (SHA-256, ambiente isolado, confiança declarada) está logo depois do portfólio, no meio do caminho de conversão do dono de negócio local. Avaliar mover para depois da agenda ou tratar como bloco recolhível.
+6. **Engenharia reversa** — escolher o alvo piloto, liberar ambiente isolado e iniciar RE-01 com autorização registrada.
+7. **UI pendente** — definir se `.section` vira classe real ou sai do markup, e unificar `max-w-6xl` × `max-w-7xl`.
 
 Antes de retomar: `npm run dev` e conferir `npm run typecheck && npm run lint && npm run build`.

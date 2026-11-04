@@ -62,7 +62,7 @@ export function Header({
           </Button>
           <Button onClick={onOpenAgenda}>
             <CalendarClock className="h-4 w-4" aria-hidden="true" />
-            Agendar reunião
+            Agendar conversa
           </Button>
         </div>
 
@@ -122,7 +122,7 @@ export function Header({
             }}
           >
             <CalendarClock className="h-4 w-4" aria-hidden="true" />
-            Agendar reunião
+            Agendar conversa
           </Button>
         </div>
       </div>

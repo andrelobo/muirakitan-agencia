@@ -1,32 +1,32 @@
-import { CheckCircle2, FileText, GitBranch, ShieldCheck } from 'lucide-react';
+import { CheckCircle2, Eye, Search, ShieldCheck } from 'lucide-react';
 
 const STEPS = [
   {
-    id: 'contexto',
-    title: 'Contexto',
+    id: 'entender',
+    title: 'Entender antes de construir',
     description:
-      'Mapeamos regras, fluxos, integrações, riscos e histórico. Criamos o contexto curado para os agentes trabalharem com precisão.',
-    icon: FileText,
+      'A gente mapeia como o seu trabalho acontece hoje, o que já existe e onde trava. A proposta nasce disso — não de um pacote pronto.',
+    icon: Search,
   },
   {
-    id: 'governanca',
-    title: 'Governança',
+    id: 'travado',
+    title: 'O que não pode errar fica travado',
     description:
-      'Definimos limites claros: o que a IA pode fazer, o que fica determinístico e quais bloqueios entram em vigor. AGENTS.md e AI_CONTEXT.md viram o contrato.',
+      'Preço, imposto, estoque e dinheiro seguem regra fixa e testada. A IA ajuda a construir; ela não decide o que é crítico.',
     icon: ShieldCheck,
   },
   {
-    id: 'agentes',
-    title: 'Agentes',
+    id: 'acompanhar',
+    title: 'Você acompanha de perto',
     description:
-      'Transformamos conhecimento tribal em skills/agentes sob medida. Playbooks reutilizáveis para diagnóstico, emissão, webhooks e tarefas críticas.',
-    icon: GitBranch,
+      'Ambiente de teste, revisão a cada etapa e acesso ao andamento. Você vê funcionando antes de aprovar a entrega.',
+    icon: Eye,
   },
   {
-    id: 'validacao',
-    title: 'Validação',
+    id: 'prova',
+    title: 'Entrega com prova',
     description:
-      'Gates obrigatórios: npm test, build e lint. Testes, revisão e evidências antes de ir para produção. Sem atalhos em sistemas críticos.',
+      'Cada entrega passa por testes antes de entrar no ar. Você recebe documentação, treinamento e 90 dias de garantia.',
     icon: CheckCircle2,
   },
 ];
@@ -40,12 +40,11 @@ export function Methodology() {
             Metodologia
           </p>
           <h2 className="mt-4 text-3xl font-semibold sm:text-4xl">
-            Como aplicamos IA com governança em sistemas reais
+            O que garante que o seu projeto sai como combinado.
           </h2>
           <p className="mt-5 text-ink-muted">
-            Inspirado na prática real com o Jupati (sistema fiscal em produção com
-            emissões reais). IA como copiloto, regras críticas sempre
-            determinísticas.
+            Método não é enfeite: é o que evita atraso, orçamento estourado e
+            sistema que quebra depois de entregue.
           </p>
         </header>
 
@@ -74,12 +73,11 @@ export function Methodology() {
             Princípio
           </p>
           <p className="mt-4 text-lg font-medium">
-            LLM != motor fiscal. IA interpreta, o motor decide. Evidências
-            primeiro, adivinhação nunca.
+            Regra fixa no que é crítico, IA no que acelera.
           </p>
           <p className="mt-2 text-sm text-ink-muted">
-            Esse é o diferencial para aplicar IA com segurança em integrações
-            críticas, legados e sistemas em produção.
+            É o que permite usar IA em sistema de verdade, inclusive fiscal, com
+            emissão real em produção — o caso do Jupati.
           </p>
         </div>
       </div>
