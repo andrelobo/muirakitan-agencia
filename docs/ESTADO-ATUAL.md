@@ -4,7 +4,7 @@
 
 **Última atualização:** quarta-feira, 04/11/2026
 **Branch:** `main`
-**HEAD:** `5332ddc` — `fix(agenda): corrige fuso nas exportacoes de calendario e valida bookings`
+**HEAD:** `3d4f8d5` — `feat(copy): direciona a abertura do site ao dono de negocio local`
 **Working tree:** limpo; `main` sincronizada com `origin/main`
 
 ---
@@ -117,6 +117,28 @@ Entradas inválidas são descartadas individualmente — as válidas continuam a
 
 Verificado com `jiti` (executa TS direto, sem instalar nada): 10 casos, incluindo JSON corrompido, não-array, serviceId desconhecido, data impossível, hora inválida, ausência de `durationMinutes` e array misto.
 
+### 2.8 Sessão de 04/11/2026 — reposicionamento para o dono de negócio local
+
+Decisão de público registrada em `docs/adr/ADR-001-publico-alvo-dono-de-negocio-local.md` e declarada no `CONTEXT.md`. A partir dela, a home deixou de abrir pelo método e passou a abrir pelo resultado; a profundidade técnica virou prova, não argumento de entrada.
+
+| Arquivo | Mudança |
+|---|---|
+| `docs/adr/ADR-001-*.md` | Novo: decisão, 4 alternativas, consequências e riscos |
+| `src/config.ts` | `eyebrow`, `tagline` e `description` em linguagem de resultado |
+| `src/components/sections/Hero.tsx` | H1, CTAs e estatísticas reescritos |
+| `src/types.ts` | `ServiceGroup` + `group` e `ctaLabel` em `Service` |
+| `src/data/services.ts` | Copy dos 3 serviços principais em linguagem simples; `PRIMARY_SERVICES` / `SECONDARY_SERVICES` |
+| `src/components/sections/Services.tsx` | 3 cards principais + faixa "Não sabe por onde começar?" + bloco secundário |
+| `src/components/sections/Agenda.tsx` | Triagem "O que você precisa?", principais primeiro, secundários sob divisor |
+| `src/components/sections/Contact.tsx` | Texto sem jargão; checklist e mensagem do WhatsApp reescritos |
+| `index.html` | `<title>`, meta description, OG/Twitter e JSON-LD alinhados ao público |
+
+**Divisão dos 8 serviços.** 3 principais (`sites`, `apps`, `automacoes`) para quem quer vender ou organizar a operação; 5 secundários (`ia-governada`, `ia`, `apis`, `contabil`, `rpa`) para quem já tem sistema ou equipe técnica. O campo `group` é a fonte da verdade — as listas `PRIMARY_SERVICES` e `SECONDARY_SERVICES` são derivadas dele, sem duplicar dados.
+
+**Correções de conteúdo encontradas no caminho.** A estatística "7 linhas de serviço" estava errada (são 8). "100% código no seu repositório" não comunica nada para o público novo. Os CTAs "Agendar sites" / "Agendar sistemas" viraram "Quero um site" / "Quero um sistema" / "Quero automatizar" (`ctaLabel`). A faixa "Não sabe por onde começar?" agora abre a agenda sem serviço pré-selecionado, em vez de forçar `sites`.
+
+**Preço:** adiado por decisão do fundador. A vitrine não menciona valores.
+
 ---
 
 ## 3. Estado verificado
@@ -140,12 +162,15 @@ Verificado com `jiti` (executa TS direto, sem instalar nada): 10 casos, incluind
 1. **Revisar o conteúdo do portfólio**: confirmar textos, URLs e principalmente a classificação de Moari Agro como *proposta*, não entrega. Revisar também as capturas (mostram dados de contato públicos dos sites).
 2. **Decidir o menu**: incluir “Projetos” no header ou manter apenas a seção? Se incluir, testar 1024px e 1280px — o header já quebra “Como funciona” em duas linhas.
 3. **Itens de UI já conhecidos**: classe `.section` indefinida; larguras `max-w-6xl` × `max-w-7xl`.
-4. **Sem testes e sem CI** — o fluxo de agenda e os helpers de data são os candidatos naturais. A correção de 04/11 foi verificada com `jiti` em script avulso; virar teste de verdade exige decidir a stack (Vitest) e alterar `package.json`, o que precisa de ADR.
-5. **Piloto de engenharia reversa** — concluir Fase 1 (disco/isolamento), escolher alvo open source, registrar autorização e rodar RE-01…RE-06. Sem case, não usar os prazos da oferta como promessa comercial.
-6. **Ferramentas de binário** — Ghidra, Binwalk, Frida e Rizin ainda não instalados; não vender firmware/análise de binário antes da Fase 2.
-7. **Imagens dos cases** — hoje em 800x500. Recapturar em 1600x1000 para hero/retina e manter os `alt` descritivos.
-8. **Search Console e analytics** — validar sitemap, canonical e indexação depois do deploy; hoje não há medição de tráfego.
-9. **Conteúdo dos cases** — revisar textos e claims; Moari é proposta, não entrega. Não inventar métricas.
+4. **Preço** — adiado por decisão do fundador em 04/11. A vitrine de serviços não cita valores; quando houver números, criar uma faixa "a partir de" nos 3 cards principais.
+5. **Metodologia ainda técnica** — abre com "Como aplicamos IA com governança em sistemas reais". Para o público declarado na ADR-001, o título deveria falar de como o trabalho acontece; o conteúdo de governança pode ficar no corpo.
+6. **Analytics** — sem medição, a decisão da ADR-001 continua sendo hipótese. Instalar Plausible/Umami exige ADR (mexe em `index.html`).
+7. **Sem testes e sem CI** — o fluxo de agenda e os helpers de data são os candidatos naturais. A correção de 04/11 foi verificada com `jiti` em script avulso; virar teste de verdade exige decidir a stack (Vitest) e alterar `package.json`, o que precisa de ADR.
+8. **Piloto de engenharia reversa** — concluir Fase 1 (disco/isolamento), escolher alvo open source, registrar autorização e rodar RE-01…RE-06. Sem case, não usar os prazos da oferta como promessa comercial.
+9. **Ferramentas de binário** — Ghidra, Binwalk, Frida e Rizin ainda não instalados; não vender firmware/análise de binário antes da Fase 2.
+10. **Imagens dos cases** — hoje em 800x500. Recapturar em 1600x1000 para hero/retina e manter os `alt` descritivos.
+11. **Search Console** — validar sitemap, canonical e indexação depois do deploy.
+12. **Conteúdo dos cases** — revisar textos e claims; Moari é proposta, não entrega. Não inventar métricas.
 
 ---
 
@@ -157,6 +182,7 @@ Verificado com `jiti` (executa TS direto, sem instalar nada): 10 casos, incluind
 - **`border` sozinho usa `currentColor`** (texto quase branco no tema escuro). Use `border-divide` ou `border-line`.
 - **`new Date('YYYY-MM-DD')` interpreta UTC.** Em Manaus (UTC-4) a data volta um dia. Use `fromISODate` de `src/lib/dates.ts`, que monta a data no fuso local.
 - **`getService()` não tem fallback.** Devolve `undefined` para id desconhecido e quebra quem acessa `.title`. Dados vindos do `localStorage` precisam passar por `loadBookings()`, que valida o `serviceId`.
+- **Serviço novo precisa de `group`.** `PRIMARY_SERVICES` e `SECONDARY_SERVICES` são derivados de `group` em `src/data/services.ts`; sem o campo, o serviço some da vitrine e da triagem da agenda.
 - **`AGENTS.md` proíbe** `rm -rf`, `git clean`, `git reset --hard` e alteração de `package.json` / `vite.config.ts` / `tsconfig.json` / `.oxlintrc.json` sem ADR.
 
 ---
@@ -165,16 +191,17 @@ Verificado com `jiti` (executa TS direto, sem instalar nada): 10 casos, incluind
 
 - **31/10/2026** — tema escuro verde baseado no `muirakitan-model`, correções de logo/botões/Hero/Agenda, renomeação ZERA → Jupati, governança MEF-1 (`AGENTS.md`, `CONTEXT.md`, `docs/mef/**`).
 - **03/11/2026** — análise do repositório (bug de data, persistência, acessibilidade, drift de docs), seção Portfólio com 7 projetos, seção de engenharia reversa com oferta comercial e roteiro de piloto, revisão de documentação (tema escuro, referências MEF, template ADR) e base de SEO com OG image, sitemap, cases estáticos e faixa de projetos no hero.
-- **04/11/2026** — correção do fuso nas exportações de calendário (Google Calendar e ICS adiantavam um dia em Manaus) e endurecimento do schema de `loadBookings`.
+- **04/11/2026** — correção do fuso nas exportações de calendário (Google Calendar e ICS adiantavam um dia em Manaus), endurecimento do schema de `loadBookings` e reposicionamento da home para o dono de negócio local (ADR-001): hero, vitrine de serviços, triagem da agenda, contato e metadados.
 
 ---
 
 ## 7. Plano para a próxima sessão
 
-1. **Revisar os cases** — textos, links, classificação de Moari como proposta e dados públicos nas capturas.
+1. **Revisar os cases** — textos, links, classificação de Moari como proposta e dados públicos nas capturas. Com o público da ADR-001, os cases locais passam a ser a prova principal da home.
 2. **Decidir sobre testes automatizados** — a correção de 04/11 ficou coberta só por script avulso com `jiti`. Introduzir Vitest exige alterar `package.json`, então precisa de ADR antes (`docs/mef/templates/ADR.md`).
 3. **Recapturar imagens** em 1600x1000 para hero/retina e regenerar o OG image se necessário.
 4. **Validar SEO em produção** — Search Console, sitemap, canonical e analytics; decidir se “Projetos” entra no menu e se o showcase vira carrossel.
+5. **Metodologia** — reescrever o título para o público da ADR-001 e rebaixar o jargão para o corpo do texto.
 5. **Engenharia reversa** — escolher o alvo piloto, liberar ambiente isolado e iniciar RE-01 com autorização registrada.
 6. **UI pendente** — definir se `.section` vira classe real ou sai do markup, e unificar `max-w-6xl` × `max-w-7xl`.
 

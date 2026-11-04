@@ -5,7 +5,7 @@ export const BRAND = {
   tagline:
     'Sites, lojas online e automação para empresas de Manaus. Você fala direto com quem faz — sem intermediário e sem termo técnico.',
   description:
-    'Desenvolvemos com IA governada: criamos contexto, agentes e guardrails para que sua equipe use IA com segurança. Também entregamos sites, aplicativos, integrações, sistemas contábeis sob medida e RPA com rastreabilidade e testes.',
+    'Fazemos sites, lojas online, sistemas e automações para empresas de Manaus. Você fala direto com quem desenvolve — a mesma pessoa que entende o problema é a que escreve o código. Se o caso for mais complexo, como integrar um sistema antigo ou aplicar IA com segurança, também resolvemos.',
   url: 'https://muirakitan.com.br',
 } as const;
 

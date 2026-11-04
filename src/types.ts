@@ -8,6 +8,8 @@ export type ServiceId =
   | 'contabil'
   | 'rpa';
 
+export type ServiceGroup = 'negocio' | 'sistema';
+
 export interface Service {
   id: ServiceId;
   title: string;
@@ -18,6 +20,9 @@ export interface Service {
   deliverables: string[];
   durationMinutes: number;
   icon: string;
+  group: ServiceGroup;
+  /** Texto do botão de agendamento quando o serviço aparece em destaque. */
+  ctaLabel?: string;
 }
 
 export interface Booking {

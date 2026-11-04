@@ -12,7 +12,7 @@ export function Contact() {
             Contato
           </p>
           <h2 className="mt-4 text-3xl font-semibold sm:text-4xl">
-            Prefere falar direto? Fale.
+            Prefere conversar antes de agendar?
           </h2>
           <p className="mt-5 max-w-lg text-ink-muted">
             {BRAND.description}
@@ -92,15 +92,15 @@ export function Contact() {
           <ul className="mt-7 space-y-3 text-sm text-ink">
             <li className="flex items-start gap-3">
               <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-accent" aria-hidden="true" />
-              Qual processo quer melhorar
+              O que o seu negócio faz
             </li>
             <li className="flex items-start gap-3">
               <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-accent" aria-hidden="true" />
-              Quais sistemas já usam
+              Onde trava hoje: site, planilha, atendimento, cobrança
             </li>
             <li className="flex items-start gap-3">
               <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-accent" aria-hidden="true" />
-              Qual prazo e orçamento aceitável
+              Para quando você precisa
             </li>
           </ul>
 
@@ -108,7 +108,7 @@ export function Contact() {
             <Button asChild className="flex-1">
               <a
                 href={whatsappUrl(
-                  'Olá! Gostaria de falar com a Muirakitan Agência.\n\nProcesso:\nSistemas:\nPrazo:',
+                  'Olá! Vim pelo site da Muirakitan.\n\nMeu negócio:\nO que eu preciso:\nPara quando:',
                 )}
                 target="_blank"
                 rel="noreferrer"

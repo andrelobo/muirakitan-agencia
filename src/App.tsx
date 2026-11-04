@@ -27,7 +27,7 @@ export default function App() {
   }, []);
 
   const handleSelectService = useCallback(
-    (nextId: ServiceId) => {
+    (nextId: ServiceId | null) => {
       setServiceId(nextId);
       scrollToAgenda();
     },

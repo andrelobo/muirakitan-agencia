@@ -10,7 +10,11 @@ import {
   MessageCircle,
 } from 'lucide-react';
 import { AGENDA, CONTACT } from '../../config';
-import { SERVICES, getService } from '../../data/services';
+import {
+  PRIMARY_SERVICES,
+  SECONDARY_SERVICES,
+  getService,
+} from '../../data/services';
 import {
   formatDateTimeLabel,
   formatDayNumber,
@@ -29,7 +33,7 @@ import {
 import { countAvailableSlots, getBusinessDates, getSlots } from '../../lib/slots';
 import { cn } from '../../lib/cn';
 import type { NewBooking } from '../../lib/bookings';
-import type { Booking, ServiceId } from '../../types';
+import type { Booking, Service, ServiceId } from '../../types';
 import { Button } from '../ui/Button';
 import { ServiceIcon } from '../ui/ServiceIcon';
 
@@ -64,6 +68,42 @@ const STEPS: { id: Step; label: string }[] = [
   { id: 2, label: 'Data e hora' },
   { id: 3, label: 'Seus dados' },
 ];
+
+interface ServiceOptionProps {
+  service: Service;
+  selected: boolean;
+  onSelect: (serviceId: ServiceId) => void;
+}
+
+function ServiceOption({ service, selected, onSelect }: ServiceOptionProps) {
+  return (
+    <button
+      type="button"
+      onClick={() => onSelect(service.id)}
+      aria-pressed={selected}
+      className={cn(
+        'rounded-xl border p-5 text-left transition-colors',
+        selected
+          ? 'border-accent bg-accent-soft'
+          : 'border-line bg-surface hover:border-accent/40 hover:bg-surface-muted',
+      )}
+    >
+      <span className="flex items-center justify-between">
+        <ServiceIcon
+          name={service.icon}
+          className={cn('h-5 w-5', selected ? 'text-accent' : 'text-ink-muted')}
+        />
+        <span className="text-xs text-ink-subtle">
+          {service.durationMinutes} min
+        </span>
+      </span>
+      <span className="mt-3 block text-sm font-semibold">{service.title}</span>
+      <span className="mt-1 block text-xs leading-relaxed text-ink-subtle">
+        {service.tagline}
+      </span>
+    </button>
+  );
+}
 
 export function Agenda({
   bookings,
@@ -121,7 +161,7 @@ export function Agenda({
 
   function handleContinue() {
     if (step === 1 && !serviceId) {
-      setError('Escolha um serviço para continuar.');
+      setError('Escolha uma opção para continuar.');
       return;
     }
     if (step === 2) {
@@ -266,45 +306,35 @@ export function Agenda({
                 {step === 1 && (
                   <fieldset>
                     <legend className="text-sm font-medium text-ink">
-                      Qual frente de serviço você quer discutir?
+                      O que você precisa?
                     </legend>
+                    <p className="mt-2 text-sm text-ink-muted">
+                      Se estiver em dúvida, escolha a opção mais próxima. A
+                      gente ajusta na conversa.
+                    </p>
                     <div className="mt-5 grid gap-3 sm:grid-cols-2">
-                      {SERVICES.map((item) => {
-                        const selected = item.id === serviceId;
-                        return (
-                          <button
-                            key={item.id}
-                            type="button"
-                            onClick={() => chooseService(item.id)}
-                            aria-pressed={selected}
-                            className={cn(
-                              'rounded-xl border p-5 text-left transition-colors',
-                              selected
-                                ? 'border-accent bg-accent-soft'
-                                : 'border-line bg-surface hover:border-accent/40 hover:bg-surface-muted',
-                            )}
-                          >
-                            <span className="flex items-center justify-between">
-                              <ServiceIcon
-                                name={item.icon}
-                                className={cn(
-                                  'h-5 w-5',
-                                  selected ? 'text-accent' : 'text-ink-muted',
-                                )}
-                              />
-                              <span className="text-xs text-ink-subtle">
-                                {item.durationMinutes} min
-                              </span>
-                            </span>
-                            <span className="mt-3 block text-sm font-semibold">
-                              {item.title}
-                            </span>
-                            <span className="mt-1 block text-xs leading-relaxed text-ink-subtle">
-                              {item.tagline}
-                            </span>
-                          </button>
-                        );
-                      })}
+                      {PRIMARY_SERVICES.map((item) => (
+                        <ServiceOption
+                          key={item.id}
+                          service={item}
+                          selected={item.id === serviceId}
+                          onSelect={chooseService}
+                        />
+                      ))}
+                    </div>
+
+                    <p className="mt-8 text-xs uppercase tracking-[0.2em] text-ink-subtle">
+                      Já tenho sistema ou equipe técnica
+                    </p>
+                    <div className="mt-3 grid gap-3 sm:grid-cols-2">
+                      {SECONDARY_SERVICES.map((item) => (
+                        <ServiceOption
+                          key={item.id}
+                          service={item}
+                          selected={item.id === serviceId}
+                          onSelect={chooseService}
+                        />
+                      ))}
                     </div>
                   </fieldset>
                 )}

@@ -1,11 +1,11 @@
 import { ArrowUpRight, Check } from 'lucide-react';
-import { SERVICES } from '../../data/services';
+import { PRIMARY_SERVICES, SECONDARY_SERVICES } from '../../data/services';
 import type { ServiceId } from '../../types';
 import { Button } from '../ui/Button';
 import { ServiceIcon } from '../ui/ServiceIcon';
 
 interface ServicesProps {
-  onSelectService: (serviceId: ServiceId) => void;
+  onSelectService: (serviceId: ServiceId | null) => void;
 }
 
 export function Services({ onSelectService }: ServicesProps) {
@@ -17,17 +17,17 @@ export function Services({ onSelectService }: ServicesProps) {
             Serviços
           </p>
           <h2 className="mt-4 text-3xl font-semibold sm:text-4xl">
-            Oito frentes para o mesmo objetivo: entregar com segurança,
-            rastreabilidade e IA com governança.
+            O que o seu negócio precisa para vender e funcionar melhor.
           </h2>
           <p className="mt-5 text-ink-muted">
-            Cada frente pode começar sozinha. Na maioria dos casos, o melhor
-            resultado vem da combinação entre site, sistema e automação.
+            Três frentes resolvem a maioria dos casos. Se você já tem sistema
+            rodando e precisa de algo mais específico, tem uma lista no fim
+            desta seção.
           </p>
         </header>
 
         <div className="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {SERVICES.map((service) => (
+          {PRIMARY_SERVICES.map((service) => (
             <article
               key={service.id}
               className="flex h-full flex-col rounded-2xl border border-divide bg-bg p-7 transition-colors hover:border-accent/30 hover:bg-bg-subtle"
@@ -73,29 +73,69 @@ export function Services({ onSelectService }: ServicesProps) {
                 className="mt-7 w-full justify-between"
                 onClick={() => onSelectService(service.id)}
               >
-                Agendar {service.shortTitle.toLowerCase()}
+                {service.ctaLabel ?? `Agendar ${service.shortTitle.toLowerCase()}`}
                 <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
               </Button>
             </article>
           ))}
+        </div>
 
-          <article className="flex h-full flex-col justify-between rounded-2xl border border-accent/20 bg-accent-soft p-7">
-            <div>
-              <h3 className="text-xl font-semibold">Não sabe o que precisa?</h3>
-              <p className="mt-4 text-sm leading-relaxed text-ink-muted">
-                Descreva o processo e a dor. Na primeira conversa ordenamos as
-                prioridades e indicamos a frente de serviço com melhor retorno
-                para o seu caso.
-              </p>
-            </div>
-            <Button
-              className="mt-7 w-full justify-between"
-              onClick={() => onSelectService('automacoes')}
-            >
-              Falar com um especialista
-              <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
-            </Button>
-          </article>
+        <div className="mt-6 flex flex-col items-start justify-between gap-6 rounded-2xl border border-accent/20 bg-accent-soft p-7 sm:flex-row sm:items-center">
+          <div>
+            <h3 className="text-xl font-semibold">Não sabe por onde começar?</h3>
+            <p className="mt-2 max-w-2xl text-sm leading-relaxed text-ink-muted">
+              Descreva o que está travando o seu negócio. Na primeira conversa
+              a gente ordena as prioridades e diz o que resolve primeiro — sem
+              compromisso.
+            </p>
+          </div>
+          <Button
+            className="shrink-0 justify-between"
+            onClick={() => onSelectService(null)}
+          >
+            Falar com quem faz
+            <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
+          </Button>
+        </div>
+
+        <div className="mt-16 border-t border-divide pt-10">
+          <header className="max-w-3xl">
+            <p className="text-xs uppercase tracking-[0.3em] text-accent">
+              Para quem já tem sistema ou equipe técnica
+            </p>
+            <h3 className="mt-4 text-2xl font-semibold">
+              Sistema legado, integração ou projeto com time de TI?
+            </h3>
+            <p className="mt-3 text-sm leading-relaxed text-ink-muted">
+              Estas frentes são para empresas que já têm sistemas rodando e
+              precisam de integração, modernização ou automação em escala.
+            </p>
+          </header>
+
+          <ul className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+            {SECONDARY_SERVICES.map((service) => (
+              <li key={service.id}>
+                <button
+                  type="button"
+                  onClick={() => onSelectService(service.id)}
+                  className="group flex w-full items-start gap-3 rounded-xl border border-divide bg-bg p-4 text-left transition-colors hover:border-accent/30 hover:bg-bg-subtle"
+                >
+                  <ServiceIcon
+                    name={service.icon}
+                    className="mt-0.5 h-5 w-5 shrink-0 text-ink-muted transition-colors group-hover:text-accent"
+                  />
+                  <span className="min-w-0">
+                    <span className="block text-sm font-semibold">
+                      {service.title}
+                    </span>
+                    <span className="mt-1 block text-xs leading-relaxed text-ink-muted">
+                      {service.tagline}
+                    </span>
+                  </span>
+                </button>
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
     </section>
