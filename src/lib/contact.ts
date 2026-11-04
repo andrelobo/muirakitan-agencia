@@ -1,6 +1,6 @@
 import { CONTACT } from '../config';
 import { getService } from '../data/services';
-import { formatDateTimeLabel } from './dates';
+import { formatDateTimeLabel, fromISODate } from './dates';
 import type { Booking } from '../types';
 
 export function bookingSummary(booking: Booking): string {
@@ -31,7 +31,7 @@ export function mailtoUrl(subject: string, body: string): string {
 export function googleCalendarUrl(booking: Booking): string {
   const service = getService(booking.serviceId);
   const [hours, minutes] = booking.time.split(':').map(Number);
-  const start = new Date(booking.date);
+  const start = fromISODate(booking.date);
   start.setHours(hours, minutes, 0, 0);
   const end = new Date(start.getTime() + booking.durationMinutes * 60 * 1000);
 
@@ -50,7 +50,7 @@ export function googleCalendarUrl(booking: Booking): string {
 
 function toIcsDate(booking: Booking, end: boolean): string {
   const [hours, minutes] = booking.time.split(':').map(Number);
-  const date = new Date(booking.date);
+  const date = fromISODate(booking.date);
   date.setHours(hours, minutes, 0, 0);
   if (end) date.setMinutes(date.getMinutes() + booking.durationMinutes);
 
