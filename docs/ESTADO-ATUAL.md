@@ -135,6 +135,8 @@ Decisão de público registrada em `docs/adr/ADR-001-publico-alvo-dono-de-negoci
 | `src/components/sections/Methodology.tsx` | Deixa de repetir o passo a passo (que é do `Process`) e passa a explicar o que garante a entrega |
 | `src/components/Header.tsx` | CTA "Agendar reunião" → "Agendar conversa", alinhado ao hero |
 | `src/App.tsx` | `ReverseEngineering` movida para depois da `Agenda` |
+| `src/data/faq.ts` | 13 perguntas: 7 de negócio primeiro, 6 técnicas no fim (`group: 'sistema'`) |
+| `src/components/sections/Faq.tsx` | Divisor visual "Perguntas técnicas" antes do bloco técnico |
 
 **Divisão dos 8 serviços.** 3 principais (`sites`, `apps`, `automacoes`) para quem quer vender ou organizar a operação; 5 secundários (`ia-governada`, `ia`, `apis`, `contabil`, `rpa`) para quem já tem sistema ou equipe técnica. O campo `group` é a fonte da verdade — as listas `PRIMARY_SERVICES` e `SECONDARY_SERVICES` são derivadas dele, sem duplicar dados.
 
@@ -143,6 +145,8 @@ Decisão de público registrada em `docs/adr/ADR-001-publico-alvo-dono-de-negoci
 **Metodologia × Como funciona.** As duas seções descreviam o mesmo passo a passo em linguagens diferentes — redundância que só piorava para quem não é técnico. `Process` fica com o passo a passo (diagnóstico → escopo → execução → entrega). `Methodology` passa a responder outra pergunta: *o que garante que isso vai dar certo* — entender antes de construir, travar o que é crítico, acompanhamento visível e entrega com prova. O jargão (AGENTS.md, gates, determinístico) saiu do título e do corpo; sobrou no rodapé como prova, no caso Jupati.
 
 **Ordem das seções.** `ReverseEngineering` ficava logo depois do portfólio — o visitante via 7 cases que reconhece e caía num bloco sobre SHA-256 e ambiente isolado. Agora a página segue o caminho de conversão (`Hero → Serviços → Portfólio → Metodologia → Como funciona → Agenda`) e o bloco técnico fica depois da agenda, como porta para quem já é técnico.
+
+**FAQ.** As perguntas abertas eram todas de comprador técnico ("O que é Context Engineering?"). As 7 primeiras passaram a responder o que o dono de negócio local pergunta antes de agendar — *preciso entender de tecnologia?*, *não sei o que preciso*, *quanto tempo*, *quanto custa e qual a garantia*, *com quem fica o código*, *e depois da entrega?*. As 6 técnicas continuam disponíveis no fim da lista, sob o rótulo "Perguntas técnicas". Nenhum valor em reais foi inventado; o parcelamento 30/40/30 e os 90 dias de garantia já constavam da versão anterior.
 
 **Preço:** adiado por decisão do fundador. A vitrine não menciona valores.
 
@@ -170,14 +174,13 @@ Decisão de público registrada em `docs/adr/ADR-001-publico-alvo-dono-de-negoci
 2. **Decidir o menu**: incluir “Projetos” no header ou manter apenas a seção? Se incluir, testar 1024px e 1280px — o header já quebra “Como funciona” em duas linhas.
 3. **Itens de UI já conhecidos**: classe `.section` indefinida; larguras `max-w-6xl` × `max-w-7xl`.
 4. **Preço** — adiado por decisão do fundador em 04/11. A vitrine de serviços não cita valores; quando houver números, criar uma faixa "a partir de" nos 3 cards principais.
-5. **FAQ ainda técnica** — as perguntas abertas são "O que significa IA com governança?", "O que é Context Engineering?" e "Vocês entregam agentes/skills prontos para o meu time?". O dono de negócio local pergunta preço, prazo, garantia e "preciso entender de tecnologia?". Reescrever as 4 primeiras e mandar as técnicas para o fim.
-6. **Analytics** — sem medição, a decisão da ADR-001 continua sendo hipótese. Instalar Plausible/Umami exige ADR (mexe em `index.html`).
-7. **Sem testes e sem CI** — o fluxo de agenda e os helpers de data são os candidatos naturais. A correção de 04/11 foi verificada com `jiti` em script avulso; virar teste de verdade exige decidir a stack (Vitest) e alterar `package.json`, o que precisa de ADR.
-8. **Piloto de engenharia reversa** — concluir Fase 1 (disco/isolamento), escolher alvo open source, registrar autorização e rodar RE-01…RE-06. Sem case, não usar os prazos da oferta como promessa comercial.
-9. **Ferramentas de binário** — Ghidra, Binwalk, Frida e Rizin ainda não instalados; não vender firmware/análise de binário antes da Fase 2.
-10. **Imagens dos cases** — hoje em 800x500. Recapturar em 1600x1000 para hero/retina e manter os `alt` descritivos.
-11. **Search Console** — validar sitemap, canonical e indexação depois do deploy.
-12. **Conteúdo dos cases** — revisar textos e claims; Moari é proposta, não entrega. Não inventar métricas.
+5. **Analytics** — sem medição, a decisão da ADR-001 continua sendo hipótese. Instalar Plausible/Umami exige ADR (mexe em `index.html`).
+6. **Sem testes e sem CI** — o fluxo de agenda e os helpers de data são os candidatos naturais. A correção de 04/11 foi verificada com `jiti` em script avulso; virar teste de verdade exige decidir a stack (Vitest) e alterar `package.json`, o que precisa de ADR.
+7. **Piloto de engenharia reversa** — concluir Fase 1 (disco/isolamento), escolher alvo open source, registrar autorização e rodar RE-01…RE-06. Sem case, não usar os prazos da oferta como promessa comercial.
+8. **Ferramentas de binário** — Ghidra, Binwalk, Frida e Rizin ainda não instalados; não vender firmware/análise de binário antes da Fase 2.
+9. **Imagens dos cases** — hoje em 800x500. Recapturar em 1600x1000 para hero/retina e manter os `alt` descritivos.
+10. **Search Console** — validar sitemap, canonical e indexação depois do deploy.
+11. **Conteúdo dos cases** — revisar textos e claims; Moari é proposta, não entrega. Não inventar métricas.
 
 ---
 
@@ -208,7 +211,7 @@ Decisão de público registrada em `docs/adr/ADR-001-publico-alvo-dono-de-negoci
 2. **Decidir sobre testes automatizados** — a correção de 04/11 ficou coberta só por script avulso com `jiti`. Introduzir Vitest exige alterar `package.json`, então precisa de ADR antes (`docs/mef/templates/ADR.md`).
 3. **Recapturar imagens** em 1600x1000 para hero/retina e regenerar o OG image se necessário.
 4. **Validar SEO em produção** — Search Console, sitemap, canonical e analytics; decidir se “Projetos” entra no menu e se o showcase vira carrossel.
-5. **FAQ** — reescrever as perguntas abertas para o público da ADR-001 (preço, prazo, garantia, "preciso saber de tecnologia?") e deixar as técnicas no fim da lista.
+5. **Depoimento de cliente** — a home não tem uma única fala de quem já contratou. Para o público da ADR-001, isso vale mais que qualquer texto novo. Precisa de autorização de uso do nome.
 6. **Engenharia reversa** — escolher o alvo piloto, liberar ambiente isolado e iniciar RE-01 com autorização registrada.
 7. **UI pendente** — definir se `.section` vira classe real ou sai do markup, e unificar `max-w-6xl` × `max-w-7xl`.
 

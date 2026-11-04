@@ -20,8 +20,15 @@ export function Faq() {
         <ul className="mt-12 divide-y divide-divide overflow-hidden rounded-2xl border bg-bg">
           {FAQ_ITEMS.map((item, index) => {
             const open = openIndex === index;
+            const startsSystemGroup =
+              item.group === 'sistema' && FAQ_ITEMS[index - 1]?.group !== 'sistema';
             return (
               <li key={item.question}>
+                {startsSystemGroup && (
+                  <p className="bg-bg-subtle px-6 py-3 text-xs uppercase tracking-[0.2em] text-ink-subtle">
+                    Perguntas técnicas
+                  </p>
+                )}
                 <h3>
                   <button
                     type="button"
