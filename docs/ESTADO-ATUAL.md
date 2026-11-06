@@ -2,9 +2,9 @@
 
 > **Snapshot de sessão.** Documento curto e volátil: descreve *onde o projeto está agora* para retomar o contexto rapidamente. Para arquitetura e regras permanentes, ver `CONTEXT.md`; para limites operacionais, `AGENTS.md`.
 
-**Última atualização:** quarta-feira, 04/11/2026
+**Última atualização:** sexta-feira, 06/11/2026
 **Branch:** `main`
-**HEAD:** `3d4f8d5` — `feat(copy): direciona a abertura do site ao dono de negocio local`
+**HEAD:** `3d6a798` — `chore(tooling): adiciona script pr-auto para automatizar fluxo de PR (#2)`
 **Working tree:** limpo; `main` sincronizada com `origin/main`
 
 ---
@@ -149,6 +149,34 @@ Decisão de público registrada em `docs/adr/ADR-001-publico-alvo-dono-de-negoci
 **FAQ.** As perguntas abertas eram todas de comprador técnico ("O que é Context Engineering?"). As 7 primeiras passaram a responder o que o dono de negócio local pergunta antes de agendar — *preciso entender de tecnologia?*, *não sei o que preciso*, *quanto tempo*, *quanto custa e qual a garantia*, *com quem fica o código*, *e depois da entrega?*. As 6 técnicas continuam disponíveis no fim da lista, sob o rótulo "Perguntas técnicas". Nenhum valor em reais foi inventado; o parcelamento 30/40/30 e os 90 dias de garantia já constavam da versão anterior.
 
 **Preço:** adiado por decisão do fundador. A vitrine não menciona valores.
+
+### 2.9 Sessão de 06/11/2026 — revisão do portfólio
+| Arquivo | Mudança |
+|---|---|
+| `src/components/sections/Portfolio.tsx` | Heading alterado de “Sites e produtos digitais que já estão no ar.” para “Sites e produtos digitais selecionados.” para refletir a presença da proposta Moari Agro |
+| `docs/ESTADO-ATUAL.md` | Atualização de branch/HEAD e registro da revisão |
+| `CONTEXT.md` | Atualização de última atualização |
+
+Verificação de URLs e classificação: Moari Agro permanece como *Proposta digital*, case e dados do projeto deixam clara a natureza de proposta. Capturas ainda requerem revisão manual para exposição de dados de contato públicos.
+
+### 2.10 Sessão de 06/11/2026 — fluxo de PR automatizado
+
+Adotado o fluxo **branch → commit → push → Pull Request → merge (squash) → cleanup**. O trabalho deixa de ir direto para a `main`.
+
+| Arquivo | Mudança |
+|---|---|
+| `scripts/pr-auto.sh` | Script que executa o fluxo completo: preflight do `gh`, cria branch, commita, faz push, abre PR e faz squash merge com delete da branch |
+| `~/.bashrc` | Função `pr-auto` que chama o script a partir de qualquer diretório |
+
+**Uso:**
+
+```bash
+pr-auto feat/nova-funcionalidade "feat(escopo): descrição" "Título do PR" "Corpo opcional"
+```
+
+**Flags:** `DRYRUN=1` (só mostra os comandos), `MERGE=merge` (usa merge commit em vez de squash).
+
+**Risco conhecido:** o script usa `git add -A`, então commita *tudo* que estiver no working tree. Ele imprime os arquivos do commit antes de confirmar, mas alterações não intencionais no working tree entram no PR — conferir a lista impressa. PRs #1 (`feat/service-cards-images`) e #2 (`chore/pr-auto-script`) já foram abertos e mergeados por este fluxo.
 
 ---
 

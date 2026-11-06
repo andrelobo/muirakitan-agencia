@@ -222,4 +222,4 @@ Baseado em `AGENTS.md`, o agente deve obedecer:
 
 *Contexto persistente: Este documento deve ser atualizado sempre que nova arquitetura, regra de negócio ou decisão técnica for introduzida no projeto. Atualizações devem ser registradas como ADRs quando relevante.*
 
-*Última atualização: Tue Nov 03 2026*
+*Última atualização: Fri Nov 06 2026*
