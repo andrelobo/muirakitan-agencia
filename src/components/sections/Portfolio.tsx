@@ -11,7 +11,7 @@ export function Portfolio() {
             Portfólio
           </p>
           <h2 className="mt-4 text-3xl font-semibold sm:text-4xl">
-            Sites e produtos digitais que já estão no ar.
+            Sites e produtos digitais selecionados.
           </h2>
           <p className="mt-5 text-ink-muted">
             Uma amostra de sites institucionais, landing pages, portfólios,
