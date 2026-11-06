@@ -23,6 +23,9 @@ export const SERVICES: Service[] = [
     icon: 'globe',
     group: 'negocio',
     ctaLabel: 'Quero um site',
+    image: '/images/servicos-sites.jpg',
+    imageAlt:
+      'Pessoa pagando uma compra online com cartão, enquanto a loja aparece na tela do notebook',
   },
   {
     id: 'apps',
@@ -46,6 +49,9 @@ export const SERVICES: Service[] = [
     icon: 'monitor',
     group: 'negocio',
     ctaLabel: 'Quero um sistema',
+    image: '/images/servicos-sistemas.jpg',
+    imageAlt:
+      'Pessoa embalando um pedido no balcão de uma loja, com notebook e materiais de trabalho ao lado',
   },
   {
     id: 'automacoes',
@@ -69,6 +75,9 @@ export const SERVICES: Service[] = [
     icon: 'workflow',
     group: 'negocio',
     ctaLabel: 'Quero automatizar',
+    image: '/images/servicos-automacao.jpg',
+    imageAlt:
+      'Oficina de marcenaria com bancada, ferramentas e iluminação de trabalho',
   },
   {
     id: 'ia-governada',

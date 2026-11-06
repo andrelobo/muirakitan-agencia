@@ -30,52 +30,77 @@ export function Services({ onSelectService }: ServicesProps) {
           {PRIMARY_SERVICES.map((service) => (
             <article
               key={service.id}
-              className="flex h-full flex-col rounded-2xl border border-divide bg-bg p-7 transition-colors hover:border-accent/30 hover:bg-bg-subtle"
+              className="group flex h-full flex-col overflow-hidden rounded-2xl border border-divide bg-bg transition-colors hover:border-accent/30 hover:bg-bg-subtle"
             >
-              <span className="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-accent-soft text-accent">
-                <ServiceIcon name={service.icon} className="h-6 w-6" />
-              </span>
+              {service.image && (
+                <div className="relative aspect-[16/9] overflow-hidden bg-bg-sunken">
+                  <img
+                    src={service.image}
+                    alt={service.imageAlt ?? ''}
+                    width={960}
+                    height={540}
+                    loading="lazy"
+                    decoding="async"
+                    className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+                  />
+                  <div
+                    className="pointer-events-none absolute inset-0 bg-gradient-to-t from-bg via-bg/15 to-transparent"
+                    aria-hidden="true"
+                  />
+                  <span className="absolute bottom-4 left-4 inline-flex h-11 w-11 items-center justify-center rounded-xl bg-accent-soft text-accent ring-1 ring-accent/20">
+                    <ServiceIcon name={service.icon} className="h-5 w-5" />
+                  </span>
+                </div>
+              )}
 
-              <h3 className="mt-6 text-xl font-semibold">{service.title}</h3>
-              <p className="mt-2 text-sm font-medium text-accent">
-                {service.tagline}
-              </p>
-              <p className="mt-4 text-sm leading-relaxed text-ink-muted">
-                {service.description}
-              </p>
+              <div className="flex flex-1 flex-col p-7">
+                {!service.image && (
+                  <span className="mb-6 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-accent-soft text-accent">
+                    <ServiceIcon name={service.icon} className="h-6 w-6" />
+                  </span>
+                )}
 
-              <ul className="mt-6 space-y-2.5">
-                {service.highlights.map((highlight) => (
-                  <li
-                    key={highlight}
-                    className="flex items-start gap-2.5 text-sm text-ink"
-                  >
-                    <Check
-                      className="mt-0.5 h-4 w-4 shrink-0 text-accent"
-                      aria-hidden="true"
-                    />
-                    {highlight}
-                  </li>
-                ))}
-              </ul>
-
-              <div className="mt-6 border-t border-divide pt-5">
-                <p className="text-xs uppercase tracking-[0.2em] text-ink-muted">
-                  Entregáveis
+                <h3 className="text-xl font-semibold">{service.title}</h3>
+                <p className="mt-2 text-sm font-medium text-accent">
+                  {service.tagline}
                 </p>
-                <p className="mt-2 text-sm text-ink-muted">
-                  {service.deliverables.join(' · ')}
+                <p className="mt-4 text-sm leading-relaxed text-ink-muted">
+                  {service.description}
                 </p>
+
+                <ul className="mt-6 space-y-2.5">
+                  {service.highlights.map((highlight) => (
+                    <li
+                      key={highlight}
+                      className="flex items-start gap-2.5 text-sm text-ink"
+                    >
+                      <Check
+                        className="mt-0.5 h-4 w-4 shrink-0 text-accent"
+                        aria-hidden="true"
+                      />
+                      {highlight}
+                    </li>
+                  ))}
+                </ul>
+
+                <div className="mt-6 border-t border-divide pt-5">
+                  <p className="text-xs uppercase tracking-[0.2em] text-ink-muted">
+                    Entregáveis
+                  </p>
+                  <p className="mt-2 text-sm text-ink-muted">
+                    {service.deliverables.join(' · ')}
+                  </p>
+                </div>
+
+                <Button
+                  variant="outline"
+                  className="mt-7 w-full justify-between"
+                  onClick={() => onSelectService(service.id)}
+                >
+                  {service.ctaLabel ?? `Agendar ${service.shortTitle.toLowerCase()}`}
+                  <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
+                </Button>
               </div>
-
-              <Button
-                variant="outline"
-                className="mt-7 w-full justify-between"
-                onClick={() => onSelectService(service.id)}
-              >
-                {service.ctaLabel ?? `Agendar ${service.shortTitle.toLowerCase()}`}
-                <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
-              </Button>
             </article>
           ))}
         </div>

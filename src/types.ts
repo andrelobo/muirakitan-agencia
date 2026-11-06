@@ -23,6 +23,10 @@ export interface Service {
   group: ServiceGroup;
   /** Texto do botão de agendamento quando o serviço aparece em destaque. */
   ctaLabel?: string;
+  /** Imagem de apoio exibida no card em destaque (caminho em `public/`). */
+  image?: string;
+  /** Descrição da imagem para leitores de tela. */
+  imageAlt?: string;
 }
 
 export interface Booking {

@@ -85,44 +85,62 @@ export function Portfolio() {
             </article>
           ))}
 
-          <article className="flex h-full flex-col justify-between rounded-2xl border border-accent/20 bg-accent-soft p-7">
-            <div>
-              <p className="text-xs uppercase tracking-[0.2em] text-accent-strong">
-                Próximo projeto
-              </p>
-              <h3 className="mt-4 text-xl font-semibold">
-                O próximo case pode ser o seu.
-              </h3>
-              <p className="mt-3 text-sm leading-relaxed text-ink-muted">
-                Começamos com um diagnóstico de 30 a 45 minutos para entender o
-                processo, o objetivo e o que faz sentido construir primeiro.
-              </p>
-              <ul className="mt-5 space-y-2.5 text-sm text-ink-muted">
-                {[
-                  'Diagnóstico do processo atual',
-                  'Prioridades e próximos passos',
-                  'Escopo, prazo e investimento',
-                ].map((item) => (
-                  <li key={item} className="flex items-start gap-2.5">
-                    <span
-                      className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-accent"
-                      aria-hidden="true"
-                    />
-                    {item}
-                  </li>
-                ))}
-              </ul>
+          <article className="group flex h-full flex-col overflow-hidden rounded-2xl border border-accent/20 bg-accent-soft">
+            <div className="relative aspect-[16/9] overflow-hidden bg-bg-sunken">
+              <img
+                src="/images/portfolio-proximo.jpg"
+                alt="Placa de aberto na vitrine de uma loja"
+                width={960}
+                height={540}
+                loading="lazy"
+                decoding="async"
+                className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+              />
+              <div
+                className="pointer-events-none absolute inset-0 bg-gradient-to-t from-accent-soft via-accent-soft/10 to-transparent"
+                aria-hidden="true"
+              />
             </div>
-            <Button
-              asChild
-              variant="accent"
-              className="mt-7 w-full justify-between"
-            >
-              <a href="#agenda">
-                Agendar diagnóstico
-                <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
-              </a>
-            </Button>
+
+            <div className="flex flex-1 flex-col justify-between p-7">
+              <div>
+                <p className="text-xs uppercase tracking-[0.2em] text-accent-strong">
+                  Próximo projeto
+                </p>
+                <h3 className="mt-4 text-xl font-semibold">
+                  O próximo case pode ser o seu.
+                </h3>
+                <p className="mt-3 text-sm leading-relaxed text-ink-muted">
+                  Começamos com um diagnóstico de 30 a 45 minutos para entender
+                  o processo, o objetivo e o que faz sentido construir primeiro.
+                </p>
+                <ul className="mt-5 space-y-2.5 text-sm text-ink-muted">
+                  {[
+                    'Diagnóstico do processo atual',
+                    'Prioridades e próximos passos',
+                    'Escopo, prazo e investimento',
+                  ].map((item) => (
+                    <li key={item} className="flex items-start gap-2.5">
+                      <span
+                        className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-accent"
+                        aria-hidden="true"
+                      />
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <Button
+                asChild
+                variant="accent"
+                className="mt-7 w-full justify-between"
+              >
+                <a href="#agenda">
+                  Agendar diagnóstico
+                  <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
+                </a>
+              </Button>
+            </div>
           </article>
         </div>
       </div>
