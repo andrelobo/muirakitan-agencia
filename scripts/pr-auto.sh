@@ -75,7 +75,7 @@ fi
 run git checkout -b "$BRANCH_NAME" -q
 
 # 3. Stage + commit
-echo "📦 Commitando alterações..."
+echo "📦 Stage de alterações..."
 run git add -A
 if git diff --cached --quiet; then
   echo "⚠️  Nada para commitar. Abortando e voltando para a main."
@@ -83,6 +83,8 @@ if git diff --cached --quiet; then
   run git branch -D "$BRANCH_NAME" -q
   exit 1
 fi
+echo "  Arquivos que entrarão no commit:"
+git diff --cached --name-status | sed 's/^/    /'
 run git commit -m "$COMMIT_MSG" -q
 
 # 4. Push
